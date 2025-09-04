@@ -1,0 +1,29 @@
+#!/bin/bash
+case_insensitive_mode=''
+while [ -n "$1" ]; do
+        case "$1" in
+                -i|--case_insensitive)
+                        case_insensitive_mode=-i
+                ;;
+                *)
+                        break
+                ;;
+        esac
+        shift
+done
+
+perl -wS grepm.pl $case_insensitive_mode $*
+exit $?
+(
+echo abc1
+echo 2
+echo abcd
+echo ab
+echo a
+) | sh -x $DROP/git/bin/grepm a b c
+exit
+cat <<EOF|grepm 'a|b|c'
+a
+b
+c
+EOF

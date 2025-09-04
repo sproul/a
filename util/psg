@@ -1,0 +1,152 @@
+#!/bin/bash
+script_dir=$(dirname $BASH_SOURCE|sed -e 's;^/$;;')      # if the containing dir is /, scripting goes better if script_dir is ''
+export PATH=$script_dir:$PATH
+
+age_mode=''
+cpu_mode=''
+dry_mode=''
+kill_all_mode=''
+no_amp_mode=''
+no_hdr_mode=''
+pids_mode=''
+quiet_mode=''
+chroot_show_mode=''
+total_CPU_of_that_group=''
+while [ -n "$1" ]; do
+        case "$1" in
+                -chroot_show)
+                        chroot_show_mode=yes
+                ;;
+                -cpu)
+                        cpu_mode=-cpu
+                        quiet_mode=-quiet
+                ;;
+                -cpu%|-cpu_proportion_of_group)
+                        shift
+                        group_defining_total_CPU="$1"
+                        psg "$group_defining_total_CPU" > $t.group_defining_total_CPU
+                        total_CPU_of_that_group=`col.sum 3 < $t.group_defining_total_CPU`
+                        if [ -n "$verbose_mode" ]; then
+                                honkat "Larger group of processes" $t.group_defining_total_CPU
+                        fi
+                        shift
+                        target_process_patt="$1"
+                        grep "$target_process_patt" $t.group_defining_total_CPU > $t.target_processes
+                        if [ ! -s "$t.target_processes" ]; then
+                                echo "FAIL no match for $target_process_patt in the group defined by $group_defining_total_CPU" 1>&2
+                                honkat "group members:" $t.group_defining_total_CPU 1>&2
+                                exit 1
+                        fi
+                        target_CPU=`col.sum 3 < $t.target_processes`
+                        if [ -n "$verbose_mode" ]; then
+                                honkat "Larger group of processes" $t.target_processes
+                        fi
+                        proportion_of_total_group_CPU=`awk "BEGIN {print  100*$target_CPU/$total_CPU_of_that_group }"`
+                        if [ -n "$verbose_mode" ]; then
+                                echo "$target_CPU / $total_CPU_of_that_group = $proportion_of_total_group_CPU"
+                        else
+                                echo "$proportion_of_total_group_CPU"
+                        fi
+                        exit
+                ;;
+                -dry)
+                        dry_mode=yes
+                ;;
+                -no_hdr)
+                        no_hdr_mode=yes
+                ;;
+                -no_amp)
+                        no_amp_mode=yes
+                ;;
+                -pids)
+                        pids_mode=yes
+                        quiet_mode=yes
+                ;;
+                r)
+                        psg ruby | sed -e '/mcollectived.pid/d' -e '/sensu-client/d' -e '/%CPU/d' -e /CUSTOM_CONFIG_CB.json/d
+                        exit
+                ;;
+                -9|-kill_all)
+                        pids_mode=yes
+                        kill_all_mode=yes
+                ;;
+                -q|-quiet)
+                        quiet_mode=yes
+                ;;
+                *)
+                        break
+                ;;
+        esac
+        shift
+done
+if [ -f /usr/ucb/ps ]; then
+        ps=/usr/ucb/ps
+else
+        ps=ps
+fi
+
+set -o noglob
+t=`mktemp`; trap "rm $t" EXIT
+$ps auxww | grepm $* | sed -e /grepm/d -e '/Dropbox\/bin\/psg/d' |
+if [ -n "$no_amp_mode" ]; then
+        grep -v '&&'
+else
+        cat
+fi > $t
+
+if [ -d /cygdrive/c ]; then
+        if [ -z "`cat $t`" ]; then
+                pslist 2> /dev/null | grepm $* > $t
+        fi
+fi
+
+cat $t | sed -e '/^$/d' -e '/\/psg /d' > $t.2
+mv $t.2 $t
+
+if [ ! -s $t ]; then
+        exit 1
+fi
+if [ -z "$quiet_mode" ]; then
+        if [ -z "$no_hdr_mode" ]; then
+                echo 'USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND'
+        fi
+        cat $t
+fi
+if [ -n "$pids_mode" ]; then
+        pids=`cat $t | sed -e /^USER/d | awk '{ print $2 }'`
+        if [ -z "$pids" ]; then
+                echo no match
+                exit 1
+        fi
+        if [ -z "$kill_all_mode" ]; then
+                echo $pids
+        else
+                if [ -n "$pids" ]; then
+                        echo "kill -9 $pids"
+                        if [ -z "$dry_mode" ]; then
+                                kill -9 $pids
+                        fi
+                fi
+        fi
+        if [ -n "$chroot_show_mode" ]; then
+                for pid in $pids; do
+                        echo $pid chroot info:
+                        ls -lad /proc/$pid/root
+                done
+        fi
+fi
+if [ -n "$cpu_mode" ]; then
+        col.sum 3 < $t
+fi
+
+exit
+$dp/git/bin/psg -9 sensu.op
+exit
+$dp/git/bin/psg -q -pids slave.jar
+exit
+$dp/git/bin/psg -chroot_show Bootstrap
+exit
+bx $dp/git/bin/psg -no_hdr Bootstrap
+$dp/git/bin/psg -cpu emacs
+exit
+$dp/git/bin/psg -cpu% bash noediting
