@@ -14,12 +14,14 @@
   "dependencies": {
     "@langchain/openai": "^0.6.11",
     "dotenv": "^17.2.2",
+    "exceljs": "^4.4.0",
     "express": "^4.17.1",
     "htmx.org": "^2.0.6",
     "langchain": "^0.3.32",
     "winston": "^3.13.0"
   },
   "devDependencies": {
+    "@types/exceljs": "^0.5.3",
     "@types/express": "^4.17.13",
     "@types/node": "^16.11.7",
     "nodemon": "^2.0.15",

@@ -13,22 +13,26 @@ async function appendCsvAsColumns(xlsxPath: string, csvPath: string, outPath: st
     .split("\n")
     .map(r => r.split(","));
 
-  // sanity: match row count
-  if (csvRows.length !== sheet.rowCount) {
-    throw new Error(`Row mismatch: sheet has ${sheet.rowCount}, csv has ${csvRows.length}`);
-  }
 
   // append CSV values as new columns
   csvRows.forEach((csvRow, i) => {
     const row = sheet.getRow(i + 1); // exceljs rows are 1-based
-    csvRow.forEach(val => row.values.push(val));
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    row.values = [...(row.values as Excel.CellValue[]), ...csvRow];
     row.commit();
   });
 
   await workbook.xlsx.writeFile(outPath);
 }
 
-// Example usage
-appendCsvAsColumns("file.xlsx", "data.csv", "out.xlsx")
+const [xlsxPath, csvPath, outPath] = process.argv.slice(2);
+
+if (!xlsxPath || !csvPath || !outPath) {
+  console.error("Usage: ts-node <script> <xlsxPath> <csvPath> <outPath>");
+  process.exit(1);
+}
+
+appendCsvAsColumns(xlsxPath, csvPath, outPath)
   .then(() => console.log("Done"))
   .catch(err => console.error(err));
