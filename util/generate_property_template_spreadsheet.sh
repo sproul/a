@@ -10,12 +10,8 @@ Gen_csv()
 	done
 	echo ''
 	# QAFieldID
-	(( i = QAFieldID0 ))
-	while [ $i -le $QAFieldIDn ]; do
-		printf "$i,"
-		(( i++ ))
-	done
-	echo ''
+        head -$QAFieldIDn $dp/git/a/util/spreadsheets/dd.Bank.fieldIDs | tr '\n' ','
+        
 	# firm type (always Bank for now)
 	(( i = QAFieldID0 ))
 	while [ $i -le $QAFieldIDn ]; do
@@ -85,12 +81,12 @@ while [ -n "$1" ]; do
 	case "$1" in
                 -all)
                         cd $dp/git/a/util/spreadsheets
+                        bank_field_count=`wc -l $dp/git/a/util/spreadsheets/dd.Bank.fieldIDs | sed -e 's/ .*//'`
                         $0 -x -QAFieldID0 1 -QAFieldIDn 2	 -i y1.csv -o y3.csv
                         $0 -x -QAFieldID0 1 -QAFieldIDn 20	 -i y1.csv -o y20.csv
                         $0 -x -QAFieldID0 1 -QAFieldIDn 100	 -i y1.csv -o y100.csv
                         $0 -x -QAFieldID0 1 -QAFieldIDn 500	 -i y1.csv -o y500.csv
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 2000	 -i y1.csv -o y2000.csv
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 5000	 -i y1.csv -o y5000.csv
+                        $0 -x -QAFieldID0 1 -QAFieldIDn $bank_field_count	 -i y1.csv -o y_all.csv
                 ;;
 		-dry)
 			dry_mode=-dry
@@ -136,5 +132,6 @@ Append_new_fields_to_csv
 
 exit
 $dp/git/a/util/generate_property_template_spreadsheet.sh -QAFieldID0 1 -QAFieldIDn 20 -i $dp/git/a/util/spreadsheets/z.csv -o $dp/git/a/util/spreadsheets/z20.csv
-exit
 $dp/git/a/util/generate_property_template_spreadsheet.sh -x -QAFieldID0 1 -QAFieldIDn 2	 -i $dp/git/a/util/spreadsheets/y1.csv -o $dp/git/a/util/spreadsheets/z3.csv
+exit
+$dp/git/a/util/generate_property_template_spreadsheet.sh -x -all
