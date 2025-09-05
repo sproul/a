@@ -11,6 +11,7 @@ Gen_csv()
 	echo ''
 	# QAFieldID
         head -$QAFieldIDn $dp/git/a/util/spreadsheets/dd.Bank.fieldIDs | tr '\n' ','
+        echo ''
         
 	# firm type (always Bank for now)
 	(( i = QAFieldID0 ))
@@ -67,6 +68,7 @@ Append_new_fields_to_csv()
 }
 
 set -o pipefail
+cd $dp/git/a/util/spreadsheets
 t=/tmp/$USER.generate_property_template_spreadsheet
 fields_to_add_csv_fn=$t.csv
 excel_date_12_31_2024=45657
@@ -81,12 +83,19 @@ while [ -n "$1" ]; do
 	case "$1" in
                 -all)
                         cd $dp/git/a/util/spreadsheets
-                        bank_field_count=`wc -l $dp/git/a/util/spreadsheets/dd.Bank.fieldIDs | sed -e 's/ .*//'`
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 2	 -i y1.csv -o y3.csv
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 20	 -i y1.csv -o y20.csv
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 100	 -i y1.csv -o y100.csv
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 500	 -i y1.csv -o y500.csv
-                        $0 -x -QAFieldID0 1 -QAFieldIDn $bank_field_count	 -i y1.csv -o y_all.csv
+                        bank_field_count=`wc -l $dp/git/a/util/spreadsheets/dd.Bank.fieldIDs | sed -e 's/^ *//' -e 's/ .*//'`
+                        if [ -n "$bank_field_count" ]; then
+                                echo "OK_field_count = $bank_field_count" 1>&2
+                        else
+                                echo "FAIL unexpectedly saw no value for bank_field_count" 1>&2
+                                exit 1
+                        fi
+                        $0 -x -QAFieldID0 1 -QAFieldIDn 2                 -o    y3.csv || exit 1
+                        $0 -x -QAFieldID0 1 -QAFieldIDn 20                -o   y20.csv || exit 1
+                        $0 -x -QAFieldID0 1 -QAFieldIDn 100               -o  y100.csv || exit 1
+                        $0 -x -QAFieldID0 1 -QAFieldIDn 500               -o  y500.csv || exit 1
+                        $0 -x -QAFieldID0 1 -QAFieldIDn $bank_field_count -o y_all.csv || exit 1
+                        exit 0
                 ;;
 		-dry)
 			dry_mode=-dry
@@ -127,11 +136,16 @@ while [ -n "$1" ]; do
 	esac
 	shift
 done
-Gen_csv > $fields_to_add_csv_fn
-Append_new_fields_to_csv
+if [ -z "$input_base_csv_fn" ]; then
+        echo "OK confirmed no value for input_base_csv_fn, so writing the addition to $output_csv_fn" 1>&2
+        Gen_csv > $output_csv_fn
+else
+        Gen_csv > $fields_to_add_csv_fn
+        Append_new_fields_to_csv
+fi
 
 exit
 $dp/git/a/util/generate_property_template_spreadsheet.sh -QAFieldID0 1 -QAFieldIDn 20 -i $dp/git/a/util/spreadsheets/z.csv -o $dp/git/a/util/spreadsheets/z20.csv
-$dp/git/a/util/generate_property_template_spreadsheet.sh -x -QAFieldID0 1 -QAFieldIDn 2	 -i $dp/git/a/util/spreadsheets/y1.csv -o $dp/git/a/util/spreadsheets/z3.csv
+$dp/git/a/util/generate_property_template_spreadsheet.sh -x -QAFieldID0 1 -QAFieldIDn 2 -o y3.csv
 exit
 $dp/git/a/util/generate_property_template_spreadsheet.sh -x -all
