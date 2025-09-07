@@ -1,0 +1,9 @@
+Company Name,Type,RSSD ID,value,property_name,qa_field_id,field_type,duration,period_date
+Acme,Bank,-512,22988,Net Income,1262,Bank,MRQ,2024-09-30 00:00:00
+Acme,Bank,-512,21162,Net Income,1262,Bank,MRQ,2024-09-30 00:00:00
+Acme,Bank,-512,22988,Net Income,1262,Bank,MRQ,2024-12-31 00:00:00
+Acme,Bank,-512,21188,Net Income,1262,Bank,MRQ,2024-12-31 00:00:00
+Usury.com,Bank,-1024,22988,Net Income,1262,Bank,MRQ,2025-03-31 00:00:00
+Usury.com,Bank,-1024,21262,Net Income,1262,Bank,MRQ,2025-03-31 00:00:00
+Usury.com,Bank,-1024,45988,Net Income,1262,Bank,MRQ,2025-06-30 00:00:00
+Usury.com,Bank,-1024,21362,Net Income,1262,Bank,MRQ,2025-06-30 00:00:00
