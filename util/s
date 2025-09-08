@@ -57,8 +57,8 @@ Stop_old()
 	# Use pkill to find and kill processes by name. The '-f' flag matches against the full command line.
 	# The `|| true` part ensures that the script doesn't exit if no processes are found.
 	Rename_old_log
-	pkill -f "node dist/index.js" || true
-	pkill -f "nodemon src/index.ts" || true
+        psg -9 "node src/index.ts" || true
+        psg -9 "nodemon src/index.ts" || true
 	echo "OK any old processes stopped."
 }
 
@@ -134,10 +134,18 @@ case "$op" in
 		Stop_old
 	;;
 	1)
+		Transpile_all
+		Start
+	;;
+	2)
 		Stop_old
 		Transpile_all
 		Start
 	;;
+        s|status)
+                psg node $dp/git/a/node_modules/.bin/ts-node src/index.ts
+                psg node $dp/git/a/node_modules/.bin/nodemon src/index.ts
+        ;;
 	*)
 		echo "FAIL did not recognize op \"$op\"" 1>&2
 		exit 1
