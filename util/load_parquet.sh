@@ -49,3 +49,6 @@ OUTDIR="$1"; shift || true
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 python3 "${SCRIPT_DIR}/load_parquet__parse_spreadsheet.py" "$INPUT" "$OUTDIR" "$@"
+
+exit
+$dp/git/a/util/load_parquet.sh -x $dp/git/a/util/spreadsheets/fsb_generated_all_non_test5.csv $dp/git/a/data

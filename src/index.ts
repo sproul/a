@@ -94,17 +94,15 @@ app.post('/chat', async (req, res) => {
             }
             if (!res.writableEnded) {
                 res.write(`<div><strong>Appleby:</strong> ${pre_chat_commands_status_message}</div>`);
-                res.end();
             }
             if (llmInput) {
                 const response = await model.invoke(llmInput);
                 const botResponse = response.content.toString();
-
                 if (!res.writableEnded) {
                     res.write(`<div><strong>Bot:</strong> ${botResponse}</div>`);
                 }
-                res.end();
             }
+            res.end();
         } catch (error) {
             finish(res, userInput, 'Error calling OpenAI:', error, 'Could not get a response from the AI model.');
         }
