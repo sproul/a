@@ -10,16 +10,9 @@ Duplicate_string_for_each_quarter()
 
 Gen_csv()
 {
-        rssd_ids_fn=$dp/git/a/util/spreadsheets/rssd_ids.csv
-        
-        if [ ! -f "$rssd_ids_fn" ]; then
-                echo "FAIL: expected file at \"$rssd_ids_fn\"" 1>&2
-                exit 1
-        else
-                echo "OK found $rssd_ids_fn" 1>&2
-        fi
         printf ',,RSSD ID'
         rssd_ids.sh -$firm_count_from_rssd_ids > $t.1
+        firm_count_from_rssd_ids=`wc -l $t.1 | sed -e 's/^ *//' -e 's/ .*//'`   #       needed in case firm_count_from_rssd_ids was -all_non_test
         while read rssd_id; do
                 Duplicate_string_for_each_quarter "$rssd_id"
         done < $t.1
@@ -116,14 +109,18 @@ while [ -n "$1" ]; do
                         fi
                         # we have a canonical set of metrics in fsb_combined_base.csv. These separate counts reflect how
                         # many firms are added (drawing from siena_rssd_ids.csv)
-                        $0 -x -firm_count_from_rssd_ids 1                 -o    fsb_generated_1.csv || exit 1
-                        $0 -x -firm_count_from_rssd_ids 2                 -o    fsb_generated_2.csv || exit 1
+                        $0 $debug_mode -firm_count_from_rssd_ids 1                 -o    fsb_generated_1.csv || exit 1
+                        $0 $debug_mode -firm_count_from_rssd_ids 2                 -o    fsb_generated_2.csv || exit 1
                         
-                        #$0 -x -QAFieldID0 1 -QAFieldIDn 2                 -o    fsb_generated_3.csv || exit 1
-                        #$0 -x -QAFieldID0 1 -QAFieldIDn 20                -o   fsb_generated_20.csv || exit 1
-                        #$0 -x -QAFieldID0 1 -QAFieldIDn 100               -o  fsb_generated_100.csv || exit 1
-                        #$0 -x -QAFieldID0 1 -QAFieldIDn 500               -o  fsb_generated_500.csv || exit 1
-                        #$0 -x -QAFieldID0 1 -QAFieldIDn $bank_field_count -o fsb_generated__all.csv || exit 1
+                        #$0 $debug_mode -QAFieldID0 1 -QAFieldIDn 2                 -o    fsb_generated_3.csv || exit 1
+                        #$0 $debug_mode -QAFieldID0 1 -QAFieldIDn 20                -o   fsb_generated_20.csv || exit 1
+                        #$0 $debug_mode -QAFieldID0 1 -QAFieldIDn 100               -o  fsb_generated_100.csv || exit 1
+                        #$0 $debug_mode -QAFieldID0 1 -QAFieldIDn 500               -o  fsb_generated_500.csv || exit 1
+                        #$0 $debug_mode -QAFieldID0 1 -QAFieldIDn $bank_field_count -o fsb_generated__all.csv || exit 1
+                        exit 0
+                ;;
+                -all_non_test)
+                        $0 $debug_mode -firm_count_from_rssd_ids all_non_test -o fsb_generated_all_non_test.csv || exit 1
                         exit 0
                 ;;
 		-dry)
@@ -176,9 +173,11 @@ else
         Gen_csv > $fields_to_add_csv_fn
         Append_new_fields_to_csv
 fi
+ls -l `pwd`/$output_csv_fn
 
 exit
 $dp/git/a/util/generate_property_template_spreadsheet.sh -QAFieldID0 1 -QAFieldIDn 20 -i $dp/git/a/util/spreadsheets/z.csv -o $dp/git/a/util/spreadsheets/z20.csv
 $dp/git/a/util/generate_property_template_spreadsheet.sh -x -QAFieldID0 1 -QAFieldIDn 2 -o y3.csv
-exit
 $dp/git/a/util/generate_property_template_spreadsheet.sh -x -all
+exit
+$dp/git/a/util/generate_property_template_spreadsheet.sh -x -all_non_test

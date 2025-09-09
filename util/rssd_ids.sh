@@ -35,6 +35,10 @@ while [ -n "$1" ]; do
                         cat $rssd_id_fn | Sed_filter_to_rssd_id | head $1
                         exit 0
                 ;;
+                -all_non_test)
+                        cat $rssd_id_fn | sed -e '/,-[0-9][0-9]*$/d' | Sed_filter_to_rssd_id
+                        exit 0
+                ;;
                 -dry)
                         dry_mode=-dry
                 ;;
@@ -70,5 +74,6 @@ exit 1
 
 exit
 $dp/git/a/util/rssd_ids.sh -from_ticker CMA
+$dp/git/a/util/rssd_ids.sh -5
 exit
-$dp/git/a/util/rssd_ids.sh -3
+$dp/git/a/util/rssd_ids.sh -all_non_test
