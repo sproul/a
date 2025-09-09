@@ -1,9 +1,13 @@
-Company Name,Type,RSSD ID,value,property_name,qa_field_id,field_type,duration,period_date
-Acme,Bank,-512,22988,Net Income,1262,Bank,MRQ,2024-09-30 00:00:00
-Acme,Bank,-512,21162,Net Income,1262,Bank,MRQ,2024-09-30 00:00:00
-Acme,Bank,-512,22988,Net Income,1262,Bank,MRQ,2024-12-31 00:00:00
-Acme,Bank,-512,21188,Net Income,1262,Bank,MRQ,2024-12-31 00:00:00
-Usury.com,Bank,-1024,22988,Net Income,1262,Bank,MRQ,2025-03-31 00:00:00
-Usury.com,Bank,-1024,21262,Net Income,1262,Bank,MRQ,2025-03-31 00:00:00
-Usury.com,Bank,-1024,45988,Net Income,1262,Bank,MRQ,2025-06-30 00:00:00
-Usury.com,Bank,-1024,21362,Net Income,1262,Bank,MRQ,2025-06-30 00:00:00
+rssd_id,company_name,type,property_name,qa_field_id,field_type,period_date,duration,value
+-512,Acme,Bank,Net Income (stated),1285,Bank,2024-03-31,MRQ,22988
+-512,Acme,Bank,Net Income (stated),1285,Bank,2024-06-30,MRQ,22988
+-512,Acme,Bank,Net Income (stated),1285,Bank,2024-09-30,MRQ,22988
+-512,Acme,Bank,Net Income (stated),1285,Bank,2024-12-31,MRQ,45988
+-512,Acme,Bank,Net Income (stated),1285,Bank,2025-03-31,MRQ,45838
+-512,Acme,Bank,Net Income (stated),1285,Bank,2025-06-30,MRQ,4411742
+-1024,Usury.com,Bank,Net Income (stated),1285,Bank,2024-03-31,MRQ,21162
+-1024,Usury.com,Bank,Net Income (stated),1285,Bank,2024-06-30,MRQ,21188
+-1024,Usury.com,Bank,Net Income (stated),1285,Bank,2024-09-30,MRQ,21262
+-1024,Usury.com,Bank,Net Income (stated),1285,Bank,2024-12-31,MRQ,21362
+-1024,Usury.com,Bank,Net Income (stated),1285,Bank,2025-03-31,MRQ,21348
+-1024,Usury.com,Bank,Net Income (stated),1285,Bank,2025-06-30,MRQ,21348
