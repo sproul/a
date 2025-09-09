@@ -1,0 +1,65 @@
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
+Total Assets,45,Bank,"3,476,132","3,633,809","3,886,596","4,052,812","4,243,340","4,411,742"
+Full Time Equivalent Employees (FTE),1260,Bank,188,193,197,204,208,225
+Total Assets per FTE,1842,Bank,"18,490","18,828","19,729","19,867","20,401","19,608"
+Salaries & Benefits Expense / Assets,3154,Bank,0.82,0.85,0.83,0.79,0.86,0.80
+Premises & Fixed Assets Expense / Assets,3155,Bank,0.08,0.08,0.07,0.07,0.07,0.07
+Data Processing Expense / Assets,3156,Bank,0.05,0.05,0.05,0.05,0.05,0.05
+"Legal, Accounting & Consulting Expense / Assets",3157,Bank,NA,NA,NA,NA,-97451354719.94,-0.07
+Noninterest Expense (core) / Assets,1323,Bank,1.37,1.45,1.42,1.36,1.43,1.43
+Total Noninterest Expense (core),1321,Bank,"12,063","12,826","13,128","13,842","14,667","15,243"
+"Noninterest Expense Growth (core, YoY)",3069,Bank,14.93,13.06,15.80,14.41,21.59,18.84
+(Nonint. Expense - Nonint. Income) / Assets,3158,Bank,1.22,1.33,1.33,1.25,1.31,1.28
+Salaries & Benefits per Avg. FTE,1847,Bank,154,157,157,161,172,158
+Premises & Fixed Asset Expense per Average FTE,2874,Bank,14,14,14,14,13,13
+Efficiency Ratio (core),1257,Bank,40.6,40.3,39.9,38.1,39.8,38.3
+Net Interest Income,1289,Bank,"28,411","30,766","32,042","35,230","35,621","38,192"
+Noninterest Income (core),1800,Bank,"1,327","1,061",886,"1,089","1,221","1,611"
+Core Operating Revenue,1843,Bank,"29,738","31,827","32,928","36,319","36,842","39,803"
+Noninterest Income (core) / Core Operating Revenue,1845,Bank,4.5,3.3,2.7,3.0,3.3,4.0
+Noninterest Income (core) / Assets,1326,Bank,0.15,0.12,0.10,0.11,0.12,0.15
+Core Operating Earnings/Avg Assets,1299,Bank,2.00,2.14,2.14,2.21,2.16,2.30
+Core Operating Revenue per Avg. FTE,1846,Bank,631,668,675,725,715,735
+Mortgages Originated,3048,Bank,NA,NA,NA,NA,NA,NA
+Mortgages Sold,3049,Bank,NA,NA,NA,NA,NA,NA
+Fee Income from Sale & Servicing of Mortgage Loans,3050,Bank,NA,NA,NA,NA,NA,NA
+Fee Earned / Mortgages Sold,3051,Bank,NA,NA,NA,NA,NA,NA
+Mortgage Servicing Assets,37,Bank,0,0,0,0,0,0
+Net Servicing Fees,3052,Bank,0,0,0,0,0,0
+Net Servicing Fees / Mortgage Servicing Assets,3053,Bank,NA,NA,NA,NA,NA,NA
+Total Managed Fiduciary Assets,3076,Bank,NA,NA,NA,NA,NA,NA
+Total Non-Managed Fiduciary Assets,3077,Bank,NA,NA,NA,NA,NA,NA
+Custody & Safekeeping Assets,3078,Bank,NA,NA,NA,NA,NA,NA
+Total Trust Assets,3079,Bank,NA,NA,NA,NA,NA,NA
+Fiduciary Activities,1259,Bank,0,0,0,0,0,0
+Trust Expenses & Net Losses,3081,Bank,NA,NA,NA,NA,NA,NA
+Trust Net Income,3082,Bank,NA,NA,NA,NA,NA,NA
+Total Deposits,46,Bank,"2,964,783","3,158,784","3,408,863","3,566,789","3,746,231","3,903,938"
+Number of Branches,3073,Bank,7,7,8,8,8,8
+Deposits per Branch,3072,Bank,"423,540","451,255","426,108","445,849","468,279","487,992"
+Service Charges on Deposits,1312,Bank,82,78,51,64,99,78
+Deposit Service Charges / Deposits,3054,Bank,0.01,0.01,0.01,0.01,0.01,0.01
+Deposit Service Charges per Branch,3070,Bank,47,45,26,32,50,39
+Premises & Fixed Assets Expense,1291,Bank,670,689,668,695,683,703
+Premises & Fixed Asset Expense / Deposits,3056,Bank,0.09,0.09,0.08,0.08,0.07,0.07
+Premises & Fixed Asset Expense per Branch,3071,Bank,383,394,334,348,342,352
+Number of Deposit Accounts ≤ $250k,1857,Bank,"12,092","13,473","13,743","14,061","14,102","14,858"
+Average Deposits per Account ≤ $250k,1858,Bank,88.97,91.27,102.56,101.72,110.33,109.41
+Number of Deposit Accounts > $250k,1859,Bank,"1,429","1,501","1,527","1,596","1,648","1,763"
+Average Deposits per Account > $250k,1860,Bank,"1,323.59","1,286.53","1,310.64","1,340.66","1,331.75","1,294.78"
+Total Number of Deposit Accounts,1861,Bank,"13,521","14,974","15,270","15,657","15,750","16,621"
+Average Deposits / Account - Total,1862,Bank,219.46,211.08,223.37,228.01,238.13,235.14
+Regulatory Earning Assets,48,Bank,"3,338,955","3,502,966","3,740,399","3,918,412","4,096,432","4,246,388"
+Regulatory Earning Assets / Assets,70,Bank,96.1,96.4,96.2,96.7,96.5,96.3
+Expanded Earning Assets,47,Bank,"3,357,827","3,521,996","3,759,591","3,937,787","4,119,678","4,269,854"
+Expanded Earning Assets / Assets,69,Bank,96.6,96.9,96.7,97.2,97.1,96.8
+Net Loans / Deposits,1713,Bank,103.88,102.45,100.5,98.08,95.7,95.24
+Net Loans & Leases HFI / Assets,63,Bank,88.3,88.9,88.1,86.2,84.4,84.3
+Total Securities / Assets,74,Bank,3.11,2.92,2.75,2.49,2.35,2.21
+Total Cash & Equivalents / Assets,1811,Bank,5.50,5.35,6.56,8.80,10.76,10.99
+Total Deposits / Total Liabilities,2859,Bank,94.9,98.9,99.1,99.2,99.1,99.1

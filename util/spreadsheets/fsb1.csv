@@ -1,0 +1,68 @@
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
+Cash & Noninterest-Bearing Deposits,2,Bank,"29,750","28,572","44,531","33,882","42,473","53,724"
+Interest Bearing Balances Due from Depositories,1557,Bank,"161,453","165,884","210,439","322,582","414,121","430,935"
+Fed Funds Sold & Reverse Repos,5,Bank,0,0,0,0,0,0
+Total Cash & Equivalents,1810,Bank,"191,203","194,456","254,970","356,464","456,594","484,659"
+Total Cash & Equivalents / Assets,1811,Bank,5.50,5.35,6.56,8.80,10.76,10.99
+Securities - Held to Maturity,1821,Bank,"3,020","2,993","2,740","2,740","2,605","2,605"
+Securities - Available for Sale,1822,Bank,"105,005","103,204","104,238","98,194","97,111","94,990"
+Total Securities,1789,Bank,"108,025","106,197","106,978","100,934","99,716","97,595"
+Total Securities / Assets,74,Bank,3.11,2.92,2.75,2.49,2.35,2.21
+Loans Held for Sale,1823,Bank,"10,243","5,322","2,910","3,247","2,669",309
+Loans Held for Investment,1824,Bank,"3,104,130","3,266,291","3,460,565","3,532,686","3,621,819","3,758,025"
+"Total Gross Loans & Leases, Net of Unearned Income",1525,Bank,"3,114,373","3,271,613","3,463,475","3,535,933","3,624,488","3,758,334"
+Loan Loss Reserve,1334,Bank,"34,653","35,406","37,583","37,790","39,224","40,167"
+Loan Loss Reserve / Loans,1337,Bank,1.12,1.08,1.09,1.07,1.08,1.07
+Net Loans & Leases (including HFS),1769,Bank,"3,079,720","3,236,207","3,425,892","3,498,143","3,585,264","3,718,167"
+Net Loans / Deposits,1713,Bank,103.88,102.45,100.5,98.08,95.7,95.24
+Net Loans & Leases HFI / Assets,63,Bank,88.3,88.9,88.1,86.2,84.4,84.3
+Premises & Fixed Assets,44,Bank,"8,501","8,239","8,247","7,828","7,468","8,701"
+Other Real Estate Owned,1385,Bank,0,0,87,87,91,0
+Goodwill,6,Bank,0,0,0,0,0,0
+Mortgage Servicing Assets,37,Bank,0,0,0,0,0,0
+Other Intangibles,1825,Bank,"2,073","1,983","1,901","1,726","1,633","1,495"
+Total Intangibles,1826,Bank,"2,073","1,983","1,901","1,726","1,633","1,495"
+Bank Owned Life Insurance,1,Bank,"18,872","19,030","19,192","19,375","23,246","23,466"
+All Other Assets,1827,Bank,"67,758","67,717","69,349","68,275","69,348","77,679"
+Total Assets,45,Bank,"3,476,132","3,633,809","3,886,596","4,052,812","4,243,340","4,411,742"
+Tangible Assets,2877,Bank,"3,474,059","3,631,826","3,884,695","4,051,086","4,241,707","4,410,247"
+Expanded Earning Assets,47,Bank,"3,357,827","3,521,996","3,759,591","3,937,787","4,119,678","4,269,854"
+Expanded Earning Assets / Assets,69,Bank,96.6,96.9,96.7,97.2,97.1,96.8
+Regulatory Earning Assets,48,Bank,"3,338,955","3,502,966","3,740,399","3,918,412","4,096,432","4,246,388"
+Regulatory Earning Assets / Assets,70,Bank,96.1,96.4,96.2,96.7,96.5,96.3
+Total Noninterest Bearing Deposits,1828,Bank,"826,399","834,886","915,823","931,423","943,528","1,013,376"
+Total Interest Bearing Deposits,1829,Bank,"2,138,384","2,323,898","2,493,040","2,635,366","2,802,703","2,890,562"
+Total Foreign Deposits,1524,Bank,0,0,0,0,0,0
+Total Deposits,46,Bank,"2,964,783","3,158,784","3,408,863","3,566,789","3,746,231","3,903,938"
+Total Deposits / Total Liabilities,2859,Bank,94.9,98.9,99.1,99.2,99.1,99.1
+Fed Funds Purchased & Repo Agreements,4,Bank,0,0,0,0,0,0
+FHLB Borrowings,1830,Bank,"20,000",0,0,0,0,0
+Other Borrowings,1832,Bank,"100,000",0,0,0,0,0
+Subordinated Debt,2876,Bank,0,0,0,0,0,0
+All Other Liabilities,2862,Bank,"39,259","34,330","29,352","30,331","35,521","34,789"
+Total Liabilities,2882,Bank,"3,124,042","3,193,114","3,438,215","3,597,120","3,781,752","3,938,727"
+Preferred Equity,43,Bank,0,0,0,0,0,0
+Common Stock & Surplus,1833,Bank,"249,126","329,996","329,996","329,996","329,996","329,996"
+Retained Earnings,1834,Bank,"115,404","122,931","128,117","138,068","143,237","154,977"
+AOCI & Other Components,1835,Bank,"-12,440","-12,232","-9,732","-12,372","-11,645","-11,958"
+Common Equity,3,Bank,"352,090","440,695","448,381","455,692","461,588","473,015"
+Non-Controlling Minority Interests,1836,Bank,0,0,0,0,0,0
+Total Equity Capital,49,Bank,"352,090","440,695","448,381","455,692","461,588","473,015"
+Total Liabilities & Equity,1837,Bank,"3,476,132","3,633,809","3,886,596","4,052,812","4,243,340","4,411,742"
+Total Tangible Equity,1090,Bank,"350,017","438,712","446,480","453,966","459,955","471,520"
+Tangible Common Equity,1790,Bank,"350,017","438,712","446,480","453,966","459,955","471,520"
+Total Equity / Assets,71,Bank,10.13,12.13,11.54,11.24,10.88,10.72
+Tangible Equity / Tangible Assets,1572,Bank,10.08,12.08,11.49,11.21,10.84,10.69
+Tangible Common Equity / Tangible Assets,1571,Bank,10.08,12.08,11.49,11.21,10.84,10.69
+Common Dividends,842,Bank,"5,951","4,564","7,044","4,664","9,266","4,272"
+Dividend Payout Ratio,4003,Bank,49.99,37.75,57.6,31.91,64.19,26.68
+Preferred Dividends,1294,Bank,0,0,0,0,0,0
+"Sale, Retirement, etc. of Capital Stock",1838,Bank,0,"80,870",0,0,0,0
+Treasury Stock Transactions,1839,Bank,0,0,0,0,0,0
+Changes Incident to Business Combinations,1840,Bank,0,0,0,0,0,0
+Other Comprehensive Income,1841,Bank,-673,208,"2,500","-2,639",726,-313

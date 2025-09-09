@@ -1,0 +1,51 @@
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
+Total Interest Income,1320,Bank,"48,047","49,510","53,162","58,324","57,569","61,096"
+Total Interest Expense,1319,Bank,"19,636","18,744","21,120","23,094","21,948","22,904"
+Net Interest Income,1289,Bank,"28,411","30,766","32,042","35,230","35,621","38,192"
+Net Interest Margin,1220,Bank,3.30,3.54,3.56,3.54,3.55,3.66
+Service Charges on Deposits,1312,Bank,82,78,51,64,99,78
+Fiduciary Activities,1259,Bank,0,0,0,0,0,0
+Gain on Sale of Loans,1281,Bank,369,449,306,150,125,119
+Other Noninterest Income (core),1293,Bank,876,534,529,875,997,"1,414"
+Noninterest Income (core),1800,Bank,"1,327","1,061",886,"1,089","1,221","1,611"
+Noninterest Income (core) / Assets,1326,Bank,0.15,0.12,0.10,0.11,0.12,0.15
+Noninterest Income (core) / Core Operating Revenue,1845,Bank,4.5,3.3,2.7,3.0,3.3,4.0
+Salaries & Benefits,1309,Bank,"7,266","7,500","7,678","8,070","8,846","8,532"
+Premises & Fixed Assets Expense,1291,Bank,670,689,668,695,683,703
+Data Processing,1801,Bank,449,459,457,475,494,488
+"Legal, Accounting & Consulting",1802,Bank,325,344,409,367,705,-705
+Other Noninterest Expense (core),1803,Bank,"4,127","4,637","4,782","5,077","5,138","6,008"
+Total Noninterest Expense (core),1321,Bank,"12,063","12,826","13,128","13,842","14,667","15,243"
+Noninterest Expense (core) / Assets,1323,Bank,1.37,1.45,1.42,1.36,1.43,1.43
+Efficiency Ratio (core),1257,Bank,40.6,40.3,39.9,38.1,39.8,38.3
+Core Operating Earnings (COE),1297,Bank,"17,675","19,001","19,800","22,477","22,175","24,560"
+Core Operating Earnings/Avg Assets,1299,Bank,2.00,2.14,2.14,2.21,2.16,2.30
+Provision for Credit Losses-Loans,1263,Bank,"1,050","1,950","2,950","1,500","2,150","2,400"
+Gain/(Loss) On Sale of OREO,1282,Bank,0,0,0,0,0,0
+Total Credit Costs,1804,Bank,900,"2,000","2,750","1,300","1,900","2,500"
+Total Credit Costs / Assets,1806,Bank,0.10,0.23,0.30,0.13,0.19,0.23
+Gain on Sale of Securities,1284,Bank,0,0,0,0,0,0
+Gain on Sale of Other Assets,1283,Bank,0,0,0,0,0,0
+Amortization of Intangibles,1254,Bank,0,0,0,0,0,0
+Total Other Non-Core Items,1807,Bank,0,0,0,0,0,0
+Total Other Non-Core Expenses / Assets,1808,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Pretax Net Income Before Extraordinary Items,1296,Bank,"16,775","17,001","17,050","21,177","20,275","22,060"
+ROAA (pretax),1792,Bank,1.90,1.92,1.85,2.08,1.98,2.07
+Income Taxes,1262,Bank,"4,870","4,910","4,820","6,562","5,840","6,048"
+Tax Rate,1316,Bank,29.03,28.88,28.27,30.99,28.80,27.42
+Extraordinary Items (net of tax),1258,Bank,0,0,0,0,0,0
+Net Income Attributable to Noncontrolling Minority Interests,1286,Bank,0,0,0,0,0,0
+Net Income (stated),1285,Bank,"11,905","12,091","12,230","14,615","14,435","16,012"
+ROAA (stated),1791,Bank,1.35,1.36,1.32,1.44,1.41,1.50
+Preferred Dividends,1294,Bank,0,0,0,0,0,0
+Net Income Available to Common Shareholders,1816,Bank,"11,905","12,091","12,230","14,615","14,435","16,012"
+ROAE Available to Common Shareholders (stated),3448,Bank,13.63,12.20,11.00,12.93,12.59,13.71
+ROATE Available to Common Shareholders (stated),3450,Bank,13.71,12.26,11.05,12.98,12.64,13.75
+ROATCE Available to Common Shareholders (stated),3449,Bank,13.71,12.26,11.05,12.98,12.64,13.75
+Common Dividends,842,Bank,"5,951","4,564","7,044","4,664","9,266","4,272"
+Dividend Payout Ratio,4003,Bank,49.99,37.75,57.6,31.91,64.19,26.68

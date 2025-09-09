@@ -1,0 +1,56 @@
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
+1-4 Family Residential Mortgage: 1st Lien,1863,Bank,"24,310","25,360","28,604","28,541","28,758","28,582"
+1-4 Family Residential Mortgage: Jr. Lien,1864,Bank,0,"2,997","2,997","3,120","3,132","3,164"
+1-4 Family Loans: Revolving,1505,Bank,"1,409","1,308","1,832","1,134","2,184","1,405"
+Total 1-4 Family Residential Loans,1865,Bank,"25,719","29,665","33,433","32,795","34,074","33,151"
+Multifamily Residential Loans,1482,Bank,"1,025,800","1,046,531","1,063,177","1,063,499","1,103,347","1,163,697"
+1-4 Family Residential Construction Loans,1866,Bank,"18,142","9,013","3,452","4,560","5,746","5,410"
+"Other Construction, Development & Land Loans",1867,Bank,"76,937","76,912","97,283","114,887","116,316","113,572"
+Total Construction & Land Development Loans,1868,Bank,"95,079","85,925","100,735","119,447","122,062","118,982"
+Owner Occupied Nonfarm Nonresidential Loans,1498,Bank,"494,286","499,503","507,207","499,969","521,415","558,497"
+Other Nonfarm Nonresidential,1491,Bank,"1,164,651","1,225,206","1,239,580","1,291,064","1,313,713","1,341,507"
+Total Nonfarm Nonresidential Loans,1870,Bank,"1,658,937","1,724,709","1,746,787","1,791,033","1,835,128","1,900,004"
+Loans Secured by Farmland,1869,Bank,"51,404","48,831","47,890","47,220","43,626","51,545"
+Total Real Estate Loans,1871,Bank,"2,856,939","2,935,661","2,992,022","3,053,994","3,138,237","3,267,379"
+Commercial & Industrial Loans,2887,Bank,"160,389","162,901","175,832","172,741","188,925","188,494"
+Credit Card Loans,3094,Bank,43,73,110,126,125,181
+Auto Loans,2863,Bank,0,0,0,0,0,0
+Other Consumer Loans,3055,Bank,"73,474","152,341","270,866","279,655","277,147","278,196"
+Total Consumer Loans,2994,Bank,"73,517","152,414","270,976","279,781","277,272","278,377"
+Agricultural Production Loans,2855,Bank,"13,711","13,354","13,112","14,304","9,422","12,541"
+Loans to Governmental Entities,3057,Bank,"3,283","3,208","3,134","2,986","2,927","2,847"
+Loans to Financial Institutions,3058,Bank,0,0,0,0,0,0
+Other Loans,3059,Bank,"6,534","4,075","8,399","12,127","7,705","8,696"
+Leases,2888,Bank,0,0,0,0,0,0
+Less: Unearned Income on Loans,2973,Bank,0,0,0,0,0,0
+"Total Gross Loans & Leases, Net of Unearned Income",1525,Bank,"3,114,373","3,271,613","3,463,475","3,535,933","3,624,488","3,758,334"
+Total Gross Loans / Deposits,2889,Bank,105.05,103.57,101.6,99.13,96.75,96.27
+Yield on Total Loans & Leases,1241,Bank,5.70,5.82,6.03,6.06,5.95,6.09
+1-4 Family Residential Mortgage: 1st Lien (% Composition),2890,Bank,0.8,0.8,0.8,0.8,0.8,0.8
+1-4 Family Residential Mortgage: Jr Lien (% Composition),2891,Bank,0.0,0.1,0.1,0.1,0.1,0.1
+1-4 Family Loans: Revolving (% Composition),1506,Bank,0.0,0.0,0.1,0.0,0.1,0.0
+Total 1-4 Family Residential Loans (% Composition),1511,Bank,0.8,0.9,1.0,0.9,0.9,0.9
+Multifamily Residential Loans (% Composition),1483,Bank,32.9,32.0,30.7,30.1,30.4,31.0
+1-4 Family Residential Construction Loan (% Composition),2894,Bank,0.6,0.3,0.1,0.1,0.2,0.1
+"Other Construction, Development & Land (% Composition)",3060,Bank,2.5,2.4,2.8,3.2,3.2,3.0
+Construction & Land Development (% Composition),1414,Bank,3.1,2.6,2.9,3.4,3.4,3.2
+Owner Occupied Nonfarm Nonresidential Loans (% Composition),1499,Bank,15.9,15.3,14.6,14.1,14.4,14.9
+Other Nonfarm Nonresidential (% Composition),1492,Bank,37.4,37.4,35.8,36.5,36.2,35.7
+Total Nonfarm Nonresidential Loans (% Composition),1517,Bank,53.3,52.7,50.4,50.7,50.6,50.6
+Loans Secured by Farmland (% Composition),1508,Bank,1.7,1.5,1.4,1.3,1.2,1.4
+Total Real Estate Loans (% Composition),1532,Bank,91.7,89.7,86.4,86.4,86.6,86.9
+Commercial & Industrial Loans (% Composition),1408,Bank,5.2,5.0,5.1,4.9,5.2,5.0
+Credit Card Loans (% Composition),3062,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Auto Loans (% Composition),2895,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Other Consumer Loans (% Composition),3064,Bank,2.4,4.7,7.8,7.9,7.6,7.4
+Total Consumer Loans (% Composition),1416,Bank,2.4,4.7,7.8,7.9,7.7,7.4
+Agricultural Production Loans (% Composition),1873,Bank,0.4,0.4,0.4,0.4,0.3,0.3
+Loans to Governmental Entities (% Composition),3066,Bank,0.1,0.1,0.1,0.1,0.1,0.1
+Loans to Financial Institutions (% Composition),3067,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Other Loans (% Composition),3068,Bank,0.2,0.1,0.2,0.3,0.2,0.2
+Leases (% Composition),1426,Bank,0.0,0.0,0.0,0.0,0.0,0.0

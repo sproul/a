@@ -1,0 +1,35 @@
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
+Loans 30-89 Days Past Due,1338,Bank,204,618,593,139,"1,630",439
+Loans 30-89 Days Past Due / Loans,1561,Bank,0.01,0.02,0.02,0.00,0.05,0.01
+Nonaccrual Loans,1380,Bank,"1,918","1,882","1,841","1,798","1,765","2,278"
+Nonaccrual Loans / Loans,1562,Bank,0.06,0.06,0.05,0.05,0.05,0.06
+Loans 90+ Days Past Due,1339,Bank,0,0,0,0,0,0
+Loans 90+ Days Past Due / Loans,1564,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Total Nonperforming Loans,1399,Bank,"1,918","1,882","1,841","1,798","1,765","2,278"
+Total Nonperforming Loans / Loans,1565,Bank,0.06,0.06,0.05,0.05,0.05,0.06
+Other Real Estate Owned,1385,Bank,0,0,87,87,91,0
+OREO / Assets,64,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Nonperforming Assets (NPAs),1381,Bank,"1,918","1,882","1,928","1,885","1,856","2,278"
+Nonperforming Assets / Assets,1566,Bank,0.06,0.05,0.05,0.05,0.04,0.05
+Restructured Loans,1390,Bank,0,0,0,0,0,0
+Restructured Loans / Loans,1567,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Nonperforming Assets & Restructured Loans,1382,Bank,"1,918","1,882","1,928","1,885","1,856","2,278"
+Nonperforming Assets & Restructured Loans / Assets,1568,Bank,0.06,0.05,0.05,0.05,0.04,0.05
+Nonperforming Loans Covered by Government Guarantees,1384,Bank,0,0,0,0,0,0
+OREO Covered by Loss Sharing Agreement,1386,Bank,0,0,0,0,0,0
+Nonperforming Assets & Restructured Loans (adjusted),1330,Bank,"1,918","1,882","1,928","1,885","1,856","2,278"
+Adjusted Nonperforming Assets & Restructured Loans / Total Assets,1570,Bank,0.06,0.05,0.05,0.05,0.04,0.05
+Texas Ratio (adjusted),1331,Bank,0.5,0.4,0.4,0.4,0.4,0.4
+Common Texas Ratio (adjusted),1328,Bank,0.5,0.4,0.4,0.4,0.4,0.4
+Loan Loss Reserve / Loans,1337,Bank,1.12,1.08,1.09,1.07,1.08,1.07
+Loan Loss Reserve / Nonperforming Loans,1336,Bank,"1,806.73","1,881.30","2,041.44","2,101.78","2,222.32","1,763.26"
+Net Chargeoff Ratio,1377,Bank,0.11,0.15,0.09,0.15,0.08,0.16
+Total Credit Loss Ratio,1394,Bank,0.09,0.13,0.08,0.13,0.07,0.14
+Provision for Credit Losses-Loans,1263,Bank,"1,050","1,950","2,950","1,500","2,150","2,400"
+Total Recoveries,2956,Bank,275,150,95,541,99,181
+Loan Loss Reserve,1334,Bank,"34,653","35,406","37,583","37,790","39,224","40,167"

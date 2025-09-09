@@ -1,0 +1,323 @@
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
+Cash & Noninterest-Bearing Deposits,2,Bank,"29,750","28,572","44,531","33,882","42,473","53,724"
+Interest Bearing Balances Due from Depositories,1557,Bank,"161,453","165,884","210,439","322,582","414,121","430,935"
+Fed Funds Sold & Reverse Repos,5,Bank,0,0,0,0,0,0
+Total Cash & Equivalents,1810,Bank,"191,203","194,456","254,970","356,464","456,594","484,659"
+Total Cash & Equivalents / Assets,1811,Bank,5.50,5.35,6.56,8.80,10.76,10.99
+Securities - Held to Maturity,1821,Bank,"3,020","2,993","2,740","2,740","2,605","2,605"
+Securities - Available for Sale,1822,Bank,"105,005","103,204","104,238","98,194","97,111","94,990"
+Total Securities,1789,Bank,"108,025","106,197","106,978","100,934","99,716","97,595"
+Total Securities / Assets,74,Bank,3.11,2.92,2.75,2.49,2.35,2.21
+Loans Held for Sale,1823,Bank,"10,243","5,322","2,910","3,247","2,669",309
+Loans Held for Investment,1824,Bank,"3,104,130","3,266,291","3,460,565","3,532,686","3,621,819","3,758,025"
+"Total Gross Loans & Leases, Net of Unearned Income",1525,Bank,"3,114,373","3,271,613","3,463,475","3,535,933","3,624,488","3,758,334"
+Loan Loss Reserve,1334,Bank,"34,653","35,406","37,583","37,790","39,224","40,167"
+Loan Loss Reserve / Loans,1337,Bank,1.12,1.08,1.09,1.07,1.08,1.07
+Net Loans & Leases (including HFS),1769,Bank,"3,079,720","3,236,207","3,425,892","3,498,143","3,585,264","3,718,167"
+Net Loans / Deposits,1713,Bank,103.88,102.45,100.5,98.08,95.7,95.24
+Net Loans & Leases HFI / Assets,63,Bank,88.3,88.9,88.1,86.2,84.4,84.3
+Premises & Fixed Assets,44,Bank,"8,501","8,239","8,247","7,828","7,468","8,701"
+Other Real Estate Owned,1385,Bank,0,0,87,87,91,0
+Goodwill,6,Bank,0,0,0,0,0,0
+Mortgage Servicing Assets,37,Bank,0,0,0,0,0,0
+Other Intangibles,1825,Bank,"2,073","1,983","1,901","1,726","1,633","1,495"
+Total Intangibles,1826,Bank,"2,073","1,983","1,901","1,726","1,633","1,495"
+Bank Owned Life Insurance,1,Bank,"18,872","19,030","19,192","19,375","23,246","23,466"
+All Other Assets,1827,Bank,"67,758","67,717","69,349","68,275","69,348","77,679"
+Total Assets,45,Bank,"3,476,132","3,633,809","3,886,596","4,052,812","4,243,340","4,411,742"
+Tangible Assets,2877,Bank,"3,474,059","3,631,826","3,884,695","4,051,086","4,241,707","4,410,247"
+Expanded Earning Assets,47,Bank,"3,357,827","3,521,996","3,759,591","3,937,787","4,119,678","4,269,854"
+Expanded Earning Assets / Assets,69,Bank,96.6,96.9,96.7,97.2,97.1,96.8
+Regulatory Earning Assets,48,Bank,"3,338,955","3,502,966","3,740,399","3,918,412","4,096,432","4,246,388"
+Regulatory Earning Assets / Assets,70,Bank,96.1,96.4,96.2,96.7,96.5,96.3
+Total Noninterest Bearing Deposits,1828,Bank,"826,399","834,886","915,823","931,423","943,528","1,013,376"
+Total Interest Bearing Deposits,1829,Bank,"2,138,384","2,323,898","2,493,040","2,635,366","2,802,703","2,890,562"
+Total Foreign Deposits,1524,Bank,0,0,0,0,0,0
+Total Deposits,46,Bank,"2,964,783","3,158,784","3,408,863","3,566,789","3,746,231","3,903,938"
+Total Deposits / Total Liabilities,2859,Bank,94.9,98.9,99.1,99.2,99.1,99.1
+Fed Funds Purchased & Repo Agreements,4,Bank,0,0,0,0,0,0
+FHLB Borrowings,1830,Bank,"20,000",0,0,0,0,0
+Other Borrowings,1832,Bank,"100,000",0,0,0,0,0
+Subordinated Debt,2876,Bank,0,0,0,0,0,0
+All Other Liabilities,2862,Bank,"39,259","34,330","29,352","30,331","35,521","34,789"
+Total Liabilities,2882,Bank,"3,124,042","3,193,114","3,438,215","3,597,120","3,781,752","3,938,727"
+Preferred Equity,43,Bank,0,0,0,0,0,0
+Common Stock & Surplus,1833,Bank,"249,126","329,996","329,996","329,996","329,996","329,996"
+Retained Earnings,1834,Bank,"115,404","122,931","128,117","138,068","143,237","154,977"
+AOCI & Other Components,1835,Bank,"-12,440","-12,232","-9,732","-12,372","-11,645","-11,958"
+Common Equity,3,Bank,"352,090","440,695","448,381","455,692","461,588","473,015"
+Non-Controlling Minority Interests,1836,Bank,0,0,0,0,0,0
+Total Equity Capital,49,Bank,"352,090","440,695","448,381","455,692","461,588","473,015"
+Total Liabilities & Equity,1837,Bank,"3,476,132","3,633,809","3,886,596","4,052,812","4,243,340","4,411,742"
+Total Tangible Equity,1090,Bank,"350,017","438,712","446,480","453,966","459,955","471,520"
+Tangible Common Equity,1790,Bank,"350,017","438,712","446,480","453,966","459,955","471,520"
+Total Equity / Assets,71,Bank,10.13,12.13,11.54,11.24,10.88,10.72
+Tangible Equity / Tangible Assets,1572,Bank,10.08,12.08,11.49,11.21,10.84,10.69
+Tangible Common Equity / Tangible Assets,1571,Bank,10.08,12.08,11.49,11.21,10.84,10.69
+Common Dividends,842,Bank,"5,951","4,564","7,044","4,664","9,266","4,272"
+Dividend Payout Ratio,4003,Bank,49.99,37.75,57.6,31.91,64.19,26.68
+Preferred Dividends,1294,Bank,0,0,0,0,0,0
+"Sale, Retirement, etc. of Capital Stock",1838,Bank,0,"80,870",0,0,0,0
+Treasury Stock Transactions,1839,Bank,0,0,0,0,0,0
+Changes Incident to Business Combinations,1840,Bank,0,0,0,0,0,0
+Other Comprehensive Income,1841,Bank,-673,208,"2,500","-2,639",726,-313
+Total Interest Income,1320,Bank,"48,047","49,510","53,162","58,324","57,569","61,096"
+Total Interest Expense,1319,Bank,"19,636","18,744","21,120","23,094","21,948","22,904"
+Net Interest Income,1289,Bank,"28,411","30,766","32,042","35,230","35,621","38,192"
+Net Interest Margin,1220,Bank,3.30,3.54,3.56,3.54,3.55,3.66
+Service Charges on Deposits,1312,Bank,82,78,51,64,99,78
+Fiduciary Activities,1259,Bank,0,0,0,0,0,0
+Gain on Sale of Loans,1281,Bank,369,449,306,150,125,119
+Other Noninterest Income (core),1293,Bank,876,534,529,875,997,"1,414"
+Noninterest Income (core),1800,Bank,"1,327","1,061",886,"1,089","1,221","1,611"
+Noninterest Income (core) / Assets,1326,Bank,0.15,0.12,0.10,0.11,0.12,0.15
+Noninterest Income (core) / Core Operating Revenue,1845,Bank,4.5,3.3,2.7,3.0,3.3,4.0
+Salaries & Benefits,1309,Bank,"7,266","7,500","7,678","8,070","8,846","8,532"
+Premises & Fixed Assets Expense,1291,Bank,670,689,668,695,683,703
+Data Processing,1801,Bank,449,459,457,475,494,488
+"Legal, Accounting & Consulting",1802,Bank,325,344,409,367,705,-705
+Other Noninterest Expense (core),1803,Bank,"4,127","4,637","4,782","5,077","5,138","6,008"
+Total Noninterest Expense (core),1321,Bank,"12,063","12,826","13,128","13,842","14,667","15,243"
+Noninterest Expense (core) / Assets,1323,Bank,1.37,1.45,1.42,1.36,1.43,1.43
+Efficiency Ratio (core),1257,Bank,40.6,40.3,39.9,38.1,39.8,38.3
+Core Operating Earnings (COE),1297,Bank,"17,675","19,001","19,800","22,477","22,175","24,560"
+Core Operating Earnings/Avg Assets,1299,Bank,2.00,2.14,2.14,2.21,2.16,2.30
+Provision for Credit Losses-Loans,1263,Bank,"1,050","1,950","2,950","1,500","2,150","2,400"
+Gain/(Loss) On Sale of OREO,1282,Bank,0,0,0,0,0,0
+Total Credit Costs,1804,Bank,900,"2,000","2,750","1,300","1,900","2,500"
+Total Credit Costs / Assets,1806,Bank,0.10,0.23,0.30,0.13,0.19,0.23
+Gain on Sale of Securities,1284,Bank,0,0,0,0,0,0
+Gain on Sale of Other Assets,1283,Bank,0,0,0,0,0,0
+Amortization of Intangibles,1254,Bank,0,0,0,0,0,0
+Total Other Non-Core Items,1807,Bank,0,0,0,0,0,0
+Total Other Non-Core Expenses / Assets,1808,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Pretax Net Income Before Extraordinary Items,1296,Bank,"16,775","17,001","17,050","21,177","20,275","22,060"
+ROAA (pretax),1792,Bank,1.90,1.92,1.85,2.08,1.98,2.07
+Income Taxes,1262,Bank,"4,870","4,910","4,820","6,562","5,840","6,048"
+Tax Rate,1316,Bank,29.03,28.88,28.27,30.99,28.80,27.42
+Extraordinary Items (net of tax),1258,Bank,0,0,0,0,0,0
+Net Income Attributable to Noncontrolling Minority Interests,1286,Bank,0,0,0,0,0,0
+Net Income (stated),1285,Bank,"11,905","12,091","12,230","14,615","14,435","16,012"
+ROAA (stated),1791,Bank,1.35,1.36,1.32,1.44,1.41,1.50
+Preferred Dividends,1294,Bank,0,0,0,0,0,0
+Net Income Available to Common Shareholders,1816,Bank,"11,905","12,091","12,230","14,615","14,435","16,012"
+ROAE Available to Common Shareholders (stated),3448,Bank,13.63,12.20,11.00,12.93,12.59,13.71
+ROATE Available to Common Shareholders (stated),3450,Bank,13.71,12.26,11.05,12.98,12.64,13.75
+ROATCE Available to Common Shareholders (stated),3449,Bank,13.71,12.26,11.05,12.98,12.64,13.75
+Common Dividends,842,Bank,"5,951","4,564","7,044","4,664","9,266","4,272"
+Dividend Payout Ratio,4003,Bank,49.99,37.75,57.6,31.91,64.19,26.68
+Total Assets,45,Bank,"3,476,132","3,633,809","3,886,596","4,052,812","4,243,340","4,411,742"
+Full Time Equivalent Employees (FTE),1260,Bank,188,193,197,204,208,225
+Total Assets per FTE,1842,Bank,"18,490","18,828","19,729","19,867","20,401","19,608"
+Salaries & Benefits Expense / Assets,3154,Bank,0.82,0.85,0.83,0.79,0.86,0.80
+Premises & Fixed Assets Expense / Assets,3155,Bank,0.08,0.08,0.07,0.07,0.07,0.07
+Data Processing Expense / Assets,3156,Bank,0.05,0.05,0.05,0.05,0.05,0.05
+"Legal, Accounting & Consulting Expense / Assets",3157,Bank,NA,NA,NA,NA,-97451354719.94,-0.07
+Noninterest Expense (core) / Assets,1323,Bank,1.37,1.45,1.42,1.36,1.43,1.43
+Total Noninterest Expense (core),1321,Bank,"12,063","12,826","13,128","13,842","14,667","15,243"
+"Noninterest Expense Growth (core, YoY)",3069,Bank,14.93,13.06,15.80,14.41,21.59,18.84
+(Nonint. Expense - Nonint. Income) / Assets,3158,Bank,1.22,1.33,1.33,1.25,1.31,1.28
+Salaries & Benefits per Avg. FTE,1847,Bank,154,157,157,161,172,158
+Premises & Fixed Asset Expense per Average FTE,2874,Bank,14,14,14,14,13,13
+Efficiency Ratio (core),1257,Bank,40.6,40.3,39.9,38.1,39.8,38.3
+Net Interest Income,1289,Bank,"28,411","30,766","32,042","35,230","35,621","38,192"
+Noninterest Income (core),1800,Bank,"1,327","1,061",886,"1,089","1,221","1,611"
+Core Operating Revenue,1843,Bank,"29,738","31,827","32,928","36,319","36,842","39,803"
+Noninterest Income (core) / Core Operating Revenue,1845,Bank,4.5,3.3,2.7,3.0,3.3,4.0
+Noninterest Income (core) / Assets,1326,Bank,0.15,0.12,0.10,0.11,0.12,0.15
+Core Operating Earnings/Avg Assets,1299,Bank,2.00,2.14,2.14,2.21,2.16,2.30
+Core Operating Revenue per Avg. FTE,1846,Bank,631,668,675,725,715,735
+Mortgages Originated,3048,Bank,NA,NA,NA,NA,NA,NA
+Mortgages Sold,3049,Bank,NA,NA,NA,NA,NA,NA
+Fee Income from Sale & Servicing of Mortgage Loans,3050,Bank,NA,NA,NA,NA,NA,NA
+Fee Earned / Mortgages Sold,3051,Bank,NA,NA,NA,NA,NA,NA
+Mortgage Servicing Assets,37,Bank,0,0,0,0,0,0
+Net Servicing Fees,3052,Bank,0,0,0,0,0,0
+Net Servicing Fees / Mortgage Servicing Assets,3053,Bank,NA,NA,NA,NA,NA,NA
+Total Managed Fiduciary Assets,3076,Bank,NA,NA,NA,NA,NA,NA
+Total Non-Managed Fiduciary Assets,3077,Bank,NA,NA,NA,NA,NA,NA
+Custody & Safekeeping Assets,3078,Bank,NA,NA,NA,NA,NA,NA
+Total Trust Assets,3079,Bank,NA,NA,NA,NA,NA,NA
+Fiduciary Activities,1259,Bank,0,0,0,0,0,0
+Trust Expenses & Net Losses,3081,Bank,NA,NA,NA,NA,NA,NA
+Trust Net Income,3082,Bank,NA,NA,NA,NA,NA,NA
+Total Deposits,46,Bank,"2,964,783","3,158,784","3,408,863","3,566,789","3,746,231","3,903,938"
+Number of Branches,3073,Bank,7,7,8,8,8,8
+Deposits per Branch,3072,Bank,"423,540","451,255","426,108","445,849","468,279","487,992"
+Service Charges on Deposits,1312,Bank,82,78,51,64,99,78
+Deposit Service Charges / Deposits,3054,Bank,0.01,0.01,0.01,0.01,0.01,0.01
+Deposit Service Charges per Branch,3070,Bank,47,45,26,32,50,39
+Premises & Fixed Assets Expense,1291,Bank,670,689,668,695,683,703
+Premises & Fixed Asset Expense / Deposits,3056,Bank,0.09,0.09,0.08,0.08,0.07,0.07
+Premises & Fixed Asset Expense per Branch,3071,Bank,383,394,334,348,342,352
+Number of Deposit Accounts ≤ $250k,1857,Bank,"12,092","13,473","13,743","14,061","14,102","14,858"
+Average Deposits per Account ≤ $250k,1858,Bank,88.97,91.27,102.56,101.72,110.33,109.41
+Number of Deposit Accounts > $250k,1859,Bank,"1,429","1,501","1,527","1,596","1,648","1,763"
+Average Deposits per Account > $250k,1860,Bank,"1,323.59","1,286.53","1,310.64","1,340.66","1,331.75","1,294.78"
+Total Number of Deposit Accounts,1861,Bank,"13,521","14,974","15,270","15,657","15,750","16,621"
+Average Deposits / Account - Total,1862,Bank,219.46,211.08,223.37,228.01,238.13,235.14
+Regulatory Earning Assets,48,Bank,"3,338,955","3,502,966","3,740,399","3,918,412","4,096,432","4,246,388"
+Regulatory Earning Assets / Assets,70,Bank,96.1,96.4,96.2,96.7,96.5,96.3
+Expanded Earning Assets,47,Bank,"3,357,827","3,521,996","3,759,591","3,937,787","4,119,678","4,269,854"
+Expanded Earning Assets / Assets,69,Bank,96.6,96.9,96.7,97.2,97.1,96.8
+Net Loans / Deposits,1713,Bank,103.88,102.45,100.5,98.08,95.7,95.24
+Net Loans & Leases HFI / Assets,63,Bank,88.3,88.9,88.1,86.2,84.4,84.3
+Total Securities / Assets,74,Bank,3.11,2.92,2.75,2.49,2.35,2.21
+Total Cash & Equivalents / Assets,1811,Bank,5.50,5.35,6.56,8.80,10.76,10.99
+Total Deposits / Total Liabilities,2859,Bank,94.9,98.9,99.1,99.2,99.1,99.1
+1-4 Family Residential Mortgage: 1st Lien,1863,Bank,"24,310","25,360","28,604","28,541","28,758","28,582"
+1-4 Family Residential Mortgage: Jr. Lien,1864,Bank,0,"2,997","2,997","3,120","3,132","3,164"
+1-4 Family Loans: Revolving,1505,Bank,"1,409","1,308","1,832","1,134","2,184","1,405"
+Total 1-4 Family Residential Loans,1865,Bank,"25,719","29,665","33,433","32,795","34,074","33,151"
+Multifamily Residential Loans,1482,Bank,"1,025,800","1,046,531","1,063,177","1,063,499","1,103,347","1,163,697"
+1-4 Family Residential Construction Loans,1866,Bank,"18,142","9,013","3,452","4,560","5,746","5,410"
+"Other Construction, Development & Land Loans",1867,Bank,"76,937","76,912","97,283","114,887","116,316","113,572"
+Total Construction & Land Development Loans,1868,Bank,"95,079","85,925","100,735","119,447","122,062","118,982"
+Owner Occupied Nonfarm Nonresidential Loans,1498,Bank,"494,286","499,503","507,207","499,969","521,415","558,497"
+Other Nonfarm Nonresidential,1491,Bank,"1,164,651","1,225,206","1,239,580","1,291,064","1,313,713","1,341,507"
+Total Nonfarm Nonresidential Loans,1870,Bank,"1,658,937","1,724,709","1,746,787","1,791,033","1,835,128","1,900,004"
+Loans Secured by Farmland,1869,Bank,"51,404","48,831","47,890","47,220","43,626","51,545"
+Total Real Estate Loans,1871,Bank,"2,856,939","2,935,661","2,992,022","3,053,994","3,138,237","3,267,379"
+Commercial & Industrial Loans,2887,Bank,"160,389","162,901","175,832","172,741","188,925","188,494"
+Credit Card Loans,3094,Bank,43,73,110,126,125,181
+Auto Loans,2863,Bank,0,0,0,0,0,0
+Other Consumer Loans,3055,Bank,"73,474","152,341","270,866","279,655","277,147","278,196"
+Total Consumer Loans,2994,Bank,"73,517","152,414","270,976","279,781","277,272","278,377"
+Agricultural Production Loans,2855,Bank,"13,711","13,354","13,112","14,304","9,422","12,541"
+Loans to Governmental Entities,3057,Bank,"3,283","3,208","3,134","2,986","2,927","2,847"
+Loans to Financial Institutions,3058,Bank,0,0,0,0,0,0
+Other Loans,3059,Bank,"6,534","4,075","8,399","12,127","7,705","8,696"
+Leases,2888,Bank,0,0,0,0,0,0
+Less: Unearned Income on Loans,2973,Bank,0,0,0,0,0,0
+"Total Gross Loans & Leases, Net of Unearned Income",1525,Bank,"3,114,373","3,271,613","3,463,475","3,535,933","3,624,488","3,758,334"
+Total Gross Loans / Deposits,2889,Bank,105.05,103.57,101.6,99.13,96.75,96.27
+Yield on Total Loans & Leases,1241,Bank,5.70,5.82,6.03,6.06,5.95,6.09
+1-4 Family Residential Mortgage: 1st Lien (% Composition),2890,Bank,0.8,0.8,0.8,0.8,0.8,0.8
+1-4 Family Residential Mortgage: Jr Lien (% Composition),2891,Bank,0.0,0.1,0.1,0.1,0.1,0.1
+1-4 Family Loans: Revolving (% Composition),1506,Bank,0.0,0.0,0.1,0.0,0.1,0.0
+Total 1-4 Family Residential Loans (% Composition),1511,Bank,0.8,0.9,1.0,0.9,0.9,0.9
+Multifamily Residential Loans (% Composition),1483,Bank,32.9,32.0,30.7,30.1,30.4,31.0
+1-4 Family Residential Construction Loan (% Composition),2894,Bank,0.6,0.3,0.1,0.1,0.2,0.1
+"Other Construction, Development & Land (% Composition)",3060,Bank,2.5,2.4,2.8,3.2,3.2,3.0
+Construction & Land Development (% Composition),1414,Bank,3.1,2.6,2.9,3.4,3.4,3.2
+Owner Occupied Nonfarm Nonresidential Loans (% Composition),1499,Bank,15.9,15.3,14.6,14.1,14.4,14.9
+Other Nonfarm Nonresidential (% Composition),1492,Bank,37.4,37.4,35.8,36.5,36.2,35.7
+Total Nonfarm Nonresidential Loans (% Composition),1517,Bank,53.3,52.7,50.4,50.7,50.6,50.6
+Loans Secured by Farmland (% Composition),1508,Bank,1.7,1.5,1.4,1.3,1.2,1.4
+Total Real Estate Loans (% Composition),1532,Bank,91.7,89.7,86.4,86.4,86.6,86.9
+Commercial & Industrial Loans (% Composition),1408,Bank,5.2,5.0,5.1,4.9,5.2,5.0
+Credit Card Loans (% Composition),3062,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Auto Loans (% Composition),2895,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Other Consumer Loans (% Composition),3064,Bank,2.4,4.7,7.8,7.9,7.6,7.4
+Total Consumer Loans (% Composition),1416,Bank,2.4,4.7,7.8,7.9,7.7,7.4
+Agricultural Production Loans (% Composition),1873,Bank,0.4,0.4,0.4,0.4,0.3,0.3
+Loans to Governmental Entities (% Composition),3066,Bank,0.1,0.1,0.1,0.1,0.1,0.1
+Loans to Financial Institutions (% Composition),3067,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Other Loans (% Composition),3068,Bank,0.2,0.1,0.2,0.3,0.2,0.2
+Leases (% Composition),1426,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Yield on Interest Bearing Balances Due From Depository Institutions,1193,Bank,5.33,5.33,5.25,4.77,4.35,4.41
+Yield on Fed Funds Sold & Reverse Repos,3095,Bank,NA,NA,NA,NA,NA,NA
+Yield on Trading Assets,1245,Bank,NA,NA,NA,NA,NA,NA
+Yield on Total Cash & Equivalents,1235,Bank,5.33,5.33,5.25,4.77,4.35,4.41
+Yield on Treasury & Agency Securities,1251,Bank,5.56,6.19,8.06,7.54,4.03,4.48
+Yield on Mortgage Backed Securities,1217,Bank,1.75,1.65,1.64,1.62,1.66,1.66
+Yield on All Other Securities,1161,Bank,1.77,1.92,1.85,1.98,2.09,2.10
+Yield on Total Securities,1244,Bank,2.06,2.10,2.04,2.04,1.98,2.01
+Yield on 1-4 Family Loans,1181,Bank,5.27,5.86,6.06,6.02,5.91,5.84
+Yield on Other Real Estate Loans,1226,Bank,5.42,5.50,5.65,5.67,5.58,5.76
+Yield on C&I Loans,1170,Bank,10.95,10.37,10.01,9.65,8.91,8.68
+Yield on Credit Card Loans,1177,Bank,65.12,5.41,4.40,7.92,6.67,6.96
+Yield on Consumer Loans,1173,Bank,7.73,8.31,8.34,8.23,8.20,8.24
+Yield on Leases,1202,Bank,NA,NA,NA,NA,NA,NA
+Yield on Total Loans & Leases,1241,Bank,5.70,5.82,6.03,6.06,5.95,6.09
+Yield on Earning Assets,1200,Bank,5.58,5.70,5.90,5.86,5.73,5.86
+Rate on Interest Bearing Transaction Accounts,1197,Bank,0.93,0.98,0.96,1.06,0.99,1.03
+Rate on Total Savings Accounts,1229,Bank,3.51,3.52,3.80,3.45,3.26,3.25
+Rate on Time Deposits ≤ $250k (prev. 100k),1167,Bank,5.14,4.95,5.17,4.97,4.41,4.39
+Rate on Time Deposits > $250k (prev. $100k),1164,Bank,4.94,4.93,5.07,4.67,4.23,4.19
+Rate on Total Interest-Bearing Deposits,1192,Bank,3.60,3.36,3.50,3.60,3.23,3.22
+Total Cost of Deposits,1176,Bank,2.60,2.45,2.57,2.65,2.40,2.40
+Rate on Fed Funds Purchased & Repo Agreements,1184,Bank,NA,NA,NA,NA,NA,NA
+Rate on Other Borrowed Money,1222,Bank,0.34,0.18,NA,NA,NA,NA
+Rate on Subordinated Notes & Debentures,1232,Bank,NA,NA,NA,NA,NA,NA
+Rate on Total Non-Deposit Liabilities,3074,Bank,0.34,0.18,NA,NA,NA,NA
+Total Cost of Funds,1236,Bank,2.50,2.40,2.57,2.65,2.40,2.40
+Interest Rate Spread,1201,Bank,2.18,2.43,2.39,2.25,2.51,2.64
+Net Interest Margin,1220,Bank,3.30,3.54,3.56,3.54,3.55,3.66
+Demand Deposits,2907,Bank,"1,117,467","1,128,836","1,233,619","1,239,806","1,234,715","1,299,051"
+Other Transaction Accounts,2938,Bank,0,0,0,0,0,0
+Total Transaction Accounts,2963,Bank,"1,117,467","1,128,836","1,233,619","1,239,806","1,234,715","1,299,051"
+Money Market Accounts,2920,Bank,"1,437,721","1,569,967","1,552,618","1,532,090","1,581,867","1,711,156"
+Other Savings Accounts,2937,Bank,"121,417","126,532","131,561","124,702","128,210","121,567"
+Total Savings Accounts,2961,Bank,"1,559,138","1,696,499","1,684,179","1,656,792","1,710,077","1,832,723"
+Time Deposits < $100k,2943,Bank,"44,759","120,031","277,991","302,860","402,918","368,748"
+Time Deposits $100k-$250k,2941,Bank,"21,694","21,324","21,969","23,414","22,482","26,145"
+Time Deposits > $250k,2942,Bank,"221,726","192,094","191,105","343,918","376,039","377,271"
+Total Time Deposits,2962,Bank,"288,179","333,449","491,065","670,192","801,439","772,164"
+Total Domestic Deposits,1522,Bank,"2,964,783","3,158,784","3,408,863","3,566,789","3,746,231","3,903,938"
+Total Foreign Deposits,1524,Bank,0,0,0,0,0,0
+Total Deposits,46,Bank,"2,964,783","3,158,784","3,408,863","3,566,789","3,746,231","3,903,938"
+Total Deposits / Total Liabilities,2859,Bank,94.9,98.9,99.1,99.2,99.1,99.1
+Total Deposits / Assets,68,Bank,85.3,86.9,87.7,88.0,88.3,88.5
+Total Noninterest Bearing Deposits,1828,Bank,"826,399","834,886","915,823","931,423","943,528","1,013,376"
+Nonbrokered Listing Service Deposits,2922,Bank,0,0,0,0,0,0
+Reciprocal Brokered Deposits,2939,Bank,"5,545","67,818","18,554",0,0,"6,016"
+Other Brokered Deposits,2923,Bank,"42,000","117,000","275,000","300,000","400,000","366,444"
+Total Brokered Deposits,2946,Bank,"47,545","184,818","293,554","300,000","400,000","372,460"
+Total State & Political Subdivision Deposits,3096,Bank,"707,908","724,883","684,243","865,619","886,886","912,617"
+Core Deposits,1750,Bank,"2,701,058","2,849,690","2,942,758","2,922,872","2,970,192","3,160,223"
+Number of Deposit Accounts ≤ $250k,1857,Bank,"12,092","13,473","13,743","14,061","14,102","14,858"
+Number of Deposit Accounts > $250k,1859,Bank,"1,429","1,501","1,527","1,596","1,648","1,763"
+Total Number of Deposit Accounts,1861,Bank,"13,521","14,974","15,270","15,657","15,750","16,621"
+Total Cost of Deposits,1176,Bank,2.60,2.45,2.57,2.65,2.40,2.40
+Demand Deposits (% Composition),1418,Bank,37.7,35.7,36.2,34.8,33.0,33.3
+Other Transaction Accounts (% Composition),1497,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Total Transaction Accounts (% Composition),1551,Bank,37.7,35.7,36.2,34.8,33.0,33.3
+Money Market Deposit Accounts (% Composition),1481,Bank,48.5,49.7,45.5,43.0,42.2,43.8
+Other Savings Accounts (% Composition),1496,Bank,4.1,4.0,3.9,3.5,3.4,3.1
+Total Savings Accounts (% Composition),1534,Bank,52.6,53.7,49.4,46.5,45.6,46.9
+Time Deposits < $100k (% Composition),1547,Bank,1.5,3.8,8.2,8.5,10.8,9.4
+Time Deposits $100k-250k (% Composition),1540,Bank,0.7,0.7,0.6,0.7,0.6,0.7
+Time Deposits > $250k (% Composition),1544,Bank,7.5,6.1,5.6,9.6,10.0,9.7
+Total Time Deposits (% Composition),1545,Bank,9.7,10.6,14.4,18.8,21.4,19.8
+Total Noninterest Bearing Deposits (% Composition),1523,Bank,27.9,26.4,26.9,26.1,25.2,26.0
+Nonbrokered Listing Service Deposits (% Composition),1486,Bank,0.0,0.0,0.0,0.0,0.0,0.0
+Reciprocal Brokered Deposits (% Composition),1500,Bank,0.2,2.1,0.5,0.0,0.0,0.2
+Other Brokered Deposits (% Composition),3075,Bank,1.4,3.7,8.1,8.4,10.7,9.4
+Total Brokered Deposits (% Composition),1514,Bank,1.6,5.9,8.6,8.4,10.7,9.5
+Total State & Political Subdivision Deposits (% Composition),3097,Bank,23.9,22.9,20.1,24.3,23.7,23.4
+Total Core Deposits (% Composition),1515,Bank,91.1,90.2,86.3,81.9,79.3,80.9
+Loans 30-89 Days Past Due,1338,Bank,204,618,593,139,"1,630",439
+Loans 30-89 Days Past Due / Loans,1561,Bank,0.01,0.02,0.02,0.00,0.05,0.01
+Nonaccrual Loans,1380,Bank,"1,918","1,882","1,841","1,798","1,765","2,278"
+Nonaccrual Loans / Loans,1562,Bank,0.06,0.06,0.05,0.05,0.05,0.06
+Loans 90+ Days Past Due,1339,Bank,0,0,0,0,0,0
+Loans 90+ Days Past Due / Loans,1564,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Total Nonperforming Loans,1399,Bank,"1,918","1,882","1,841","1,798","1,765","2,278"
+Total Nonperforming Loans / Loans,1565,Bank,0.06,0.06,0.05,0.05,0.05,0.06
+Other Real Estate Owned,1385,Bank,0,0,87,87,91,0
+OREO / Assets,64,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Nonperforming Assets (NPAs),1381,Bank,"1,918","1,882","1,928","1,885","1,856","2,278"
+Nonperforming Assets / Assets,1566,Bank,0.06,0.05,0.05,0.05,0.04,0.05
+Restructured Loans,1390,Bank,0,0,0,0,0,0
+Restructured Loans / Loans,1567,Bank,0.00,0.00,0.00,0.00,0.00,0.00
+Nonperforming Assets & Restructured Loans,1382,Bank,"1,918","1,882","1,928","1,885","1,856","2,278"
+Nonperforming Assets & Restructured Loans / Assets,1568,Bank,0.06,0.05,0.05,0.05,0.04,0.05
+Nonperforming Loans Covered by Government Guarantees,1384,Bank,0,0,0,0,0,0
+OREO Covered by Loss Sharing Agreement,1386,Bank,0,0,0,0,0,0
+Nonperforming Assets & Restructured Loans (adjusted),1330,Bank,"1,918","1,882","1,928","1,885","1,856","2,278"
+Adjusted Nonperforming Assets & Restructured Loans / Total Assets,1570,Bank,0.06,0.05,0.05,0.05,0.04,0.05
+Texas Ratio (adjusted),1331,Bank,0.5,0.4,0.4,0.4,0.4,0.4
+Common Texas Ratio (adjusted),1328,Bank,0.5,0.4,0.4,0.4,0.4,0.4
+Loan Loss Reserve / Loans,1337,Bank,1.12,1.08,1.09,1.07,1.08,1.07
+Loan Loss Reserve / Nonperforming Loans,1336,Bank,"1,806.73","1,881.30","2,041.44","2,101.78","2,222.32","1,763.26"
+Net Chargeoff Ratio,1377,Bank,0.11,0.15,0.09,0.15,0.08,0.16
+Total Credit Loss Ratio,1394,Bank,0.09,0.13,0.08,0.13,0.07,0.14
+Provision for Credit Losses-Loans,1263,Bank,"1,050","1,950","2,950","1,500","2,150","2,400"
+Total Recoveries,2956,Bank,275,150,95,541,99,181
+Loan Loss Reserve,1334,Bank,"34,653","35,406","37,583","37,790","39,224","40,167"
