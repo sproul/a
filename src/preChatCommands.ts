@@ -22,26 +22,31 @@ async function getRssdIdForTicker(ticker: string): Promise<string | null> {
   });
 }
 
-export async function strip_out_and_execute_pre_chat_commands(userInput: string): Promise<string> {
+export async function strip_out_and_execute_pre_chat_commands(userInput: string): Promise<string[]> {
   const lines = userInput.split('\n');
   let firstNonCommandIndex = 0;
+  let pre_chat_commands_status_message = '';
 
   for (const line of lines) {
     const trimmedLine = line.trim();
     if (trimmedLine === '-v') {
       state.verbose = true;
-      getLogger().info('Verbose mode enabled.');
+      pre_chat_commands_status_message += 'Verbose mode enabled.\n<br>';
+      getLogger().info(pre_chat_commands_status_message);
       firstNonCommandIndex++;
     } else if (trimmedLine === '-x') {
       state.debug = true;
-      state.verbose = true; // As per instructions, -x implies -v
-      getLogger().info('Debug mode enabled (verbose mode also enabled).');
+      state.verbose = true;
+      pre_chat_commands_status_message += 'Debug mode enabled (verbose mode also enabled).<br>'
+      getLogger().info(pre_chat_commands_status_message);
       firstNonCommandIndex++;
     } else if (/^[A-Z0-9]+$/.test(trimmedLine)) {
-      getLogger().info(`Ticker command detected: ${trimmedLine}.`);
-      const rssdId = await getRssdIdForTicker(trimmedLine);
+      let ticker = trimmedLine;
+      getLogger().info(`Ticker detected: ${ticker}.`);
+      const rssdId = await getRssdIdForTicker(ticker);
       if (rssdId) {
-        getLogger().info(`Found RSSD ID: ${rssdId} for ticker ${trimmedLine}.`);
+        getLogger().info(`Found RSSD ID: ${rssdId} for ticker ${ticker}.`);
+        pre_chat_commands_status_message += `OK: from ticker ${ticker}: resolved to RSSD ID: ${rssdId}.<br>`;
         // Here you would gather metrics related to the firm
       } else {
         getLogger().info(`No RSSD ID found for ticker ${trimmedLine}.`);
@@ -52,6 +57,6 @@ export async function strip_out_and_execute_pre_chat_commands(userInput: string)
       break;
     }
   }
-
-  return lines.slice(firstNonCommandIndex).join('\n');
+  userInput = lines.slice(firstNonCommandIndex).join('\n').trim()
+  return [userInput, pre_chat_commands_status_message];
 }
