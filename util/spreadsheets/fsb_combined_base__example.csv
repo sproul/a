@@ -1,4 +1,9 @@
-﻿Field,QA Field ID,Field Type,,,,,,
+﻿,,RSSD ID,2867337,2867337,2867337,2867337,2867337,2867337
+,,Name,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank,Five Star Bank
+,,Type,Bank,Bank,Bank,Bank,Bank,Bank
+,,Period,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+,,Duration,MRQ,MRQ,MRQ,MRQ,MRQ,MRQ
+Field,QA Field ID,Field Type,,,,,,
 Cash & Noninterest-Bearing Deposits,2,Bank,"29,750","28,572","44,531","33,882","42,473","53,724"
 Interest Bearing Balances Due from Depositories,1557,Bank,"161,453","165,884","210,439","322,582","414,121","430,935"
 Fed Funds Sold & Reverse Repos,5,Bank,0,0,0,0,0,0

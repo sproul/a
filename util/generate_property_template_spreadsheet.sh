@@ -1,39 +1,60 @@
 #!/bin/bash
+script_dir=$(dirname $BASH_SOURCE|sed -e 's;^/$;;')      # if the containing dir is /, scripting goes better if script_dir is ''
+
+Duplicate_string_for_each_quarter()
+{
+        local s="$1"
+        printf ",%s,%s,%s,%s,%s,%s" "$s" "$s" "$s" "$s" "$s" "$s"
+}
 
 Gen_csv()
 {
-	# field name, leave blank:
-	(( i = QAFieldID0 ))
-	while [ $i -le $QAFieldIDn ]; do
-		printf ","
-		(( i++ ))
-	done
-	echo ''
-	# QAFieldID
-        head -$QAFieldIDn $dp/git/a/util/spreadsheets/dd.Bank.fieldIDs | tr '\n' ','
+        rssd_ids_fn=$dp/git/a/util/spreadsheets/rssd_ids.csv
+        
+        if [ ! -f "$rssd_ids_fn" ]; then
+                echo "FAIL: expected file at \"$rssd_ids_fn\"" 1>&2
+                exit 1
+        else
+                echo "OK found $rssd_ids_fn" 1>&2
+        fi
+        printf ',,RSSD ID'
+        head -$firm_count_from_rssd_ids $rssd_ids_fn > $t.1
+        while read rssd_id; do
+                Duplicate_string_for_each_quarter "$rssd_id"
+        done < $t.1
+        echo ''
+
+        printf ,,Name
+        (( i = 0 ))
+        while [ $i -lt $firm_count_from_rssd_ids ]; do
+                Duplicate_string_for_each_quarter ''
+                (( i++ ))
+        done 
         echo ''
         
-	# firm type (always Bank for now)
-	(( i = QAFieldID0 ))
-	while [ $i -le $QAFieldIDn ]; do
-		printf "Bank,"
-		(( i++ ))
-	done
-	echo ''
-	# date
-	(( i = QAFieldID0 ))
-	while [ $i -le $QAFieldIDn ]; do
-		printf "$excel_date_12_31_2024,"
-		(( i++ ))
-	done
-	echo ''
-	# time period type
-	(( i = QAFieldID0 ))
-	while [ $i -le $QAFieldIDn ]; do
-		printf "MRQ,"
-		(( i++ ))
-	done
-	echo ''
+        printf ,,Type
+        (( i = 0 ))
+        while [ $i -lt $firm_count_from_rssd_ids ]; do
+                Duplicate_string_for_each_quarter Bank
+                (( i++ ))
+        done
+        echo ''
+        
+        printf ,,Period
+        (( i = 0 ))
+        while [ $i -lt $firm_count_from_rssd_ids ]; do
+                printf ,3/31/2024,6/30/2024,9/30/2024,12/31/2024,3/31/2025,6/30/2025
+                (( i++ ))
+        done
+        
+        printf ,,Duration
+        (( i = 0 ))
+        while [ $i -lt $firm_count_from_rssd_ids ]; do
+                Duplicate_string_for_each_quarter MRQ
+                (( i++ ))
+        done
+        echo ''
+        cat $script_dir/spreadsheets/fsb_combined_base.csv
 }
 
 Append_new_fields_to_csv()
@@ -76,6 +97,7 @@ debug_mode=''
 dry_mode=''
 QAFieldID0=''
 QAFieldIDn=''
+firm_count_from_rssd_ids=''
 input_base_csv_fn=''
 output_csv_fn=''
 verbose_mode=''
@@ -90,11 +112,16 @@ while [ -n "$1" ]; do
                                 echo "FAIL unexpectedly saw no value for bank_field_count" 1>&2
                                 exit 1
                         fi
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 2                 -o    y3.csv || exit 1
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 20                -o   y20.csv || exit 1
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 100               -o  y100.csv || exit 1
-                        $0 -x -QAFieldID0 1 -QAFieldIDn 500               -o  y500.csv || exit 1
-                        $0 -x -QAFieldID0 1 -QAFieldIDn $bank_field_count -o y_all.csv || exit 1
+                        # we have a canonical set of metrics in fsb_combined_base.csv. These separate counts reflect how
+                        # many firms are added (drawing from siena_rssd_ids.csv)
+                        $0 -x -firm_count_from_rssd_ids 1                 -o    fsb_generated_1.csv || exit 1
+                        $0 -x -firm_count_from_rssd_ids 2                 -o    fsb_generated_2.csv || exit 1
+                        
+                        #$0 -x -QAFieldID0 1 -QAFieldIDn 2                 -o    fsb_generated_3.csv || exit 1
+                        #$0 -x -QAFieldID0 1 -QAFieldIDn 20                -o   fsb_generated_20.csv || exit 1
+                        #$0 -x -QAFieldID0 1 -QAFieldIDn 100               -o  fsb_generated_100.csv || exit 1
+                        #$0 -x -QAFieldID0 1 -QAFieldIDn 500               -o  fsb_generated_500.csv || exit 1
+                        #$0 -x -QAFieldID0 1 -QAFieldIDn $bank_field_count -o fsb_generated__all.csv || exit 1
                         exit 0
                 ;;
 		-dry)
@@ -119,6 +146,10 @@ while [ -n "$1" ]; do
 		-q|-quiet)
 			verbose_mode=''
 		;;
+                -firm_count_from_rssd_ids)
+                        shift
+                        firm_count_from_rssd_ids="$1"
+                ;;
 		-v|-verbose)
 			verbose_mode=-v
 		;;
