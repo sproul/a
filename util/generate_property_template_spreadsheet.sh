@@ -1,5 +1,6 @@
 #!/bin/bash
 script_dir=$(dirname $BASH_SOURCE|sed -e 's;^/$;;')      # if the containing dir is /, scripting goes better if script_dir is ''
+export PATH=$script_dir:$PATH
 
 Duplicate_string_for_each_quarter()
 {
@@ -18,7 +19,7 @@ Gen_csv()
                 echo "OK found $rssd_ids_fn" 1>&2
         fi
         printf ',,RSSD ID'
-        head -$firm_count_from_rssd_ids $rssd_ids_fn > $t.1
+        rssd_ids.sh -$firm_count_from_rssd_ids > $t.1
         while read rssd_id; do
                 Duplicate_string_for_each_quarter "$rssd_id"
         done < $t.1

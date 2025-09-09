@@ -150,4 +150,4 @@ else
 fi
 exit
 cd $dp/git/a/util/
-bash -x $dp/git/a/util/load_parquet__ticker_to_rssdid.sh spreadsheets/ticker_to_rssdid.csv ../data
+bash -x $dp/git/a/util/load_parquet__ticker_to_rssdid.sh spreadsheets/tickers_and_rssd_ids.csv ../data
