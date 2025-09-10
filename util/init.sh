@@ -15,4 +15,38 @@ case "$OS" in
                 exit 1
         ;;
 esac
-exit
+
+# Create DuckDB views for financial data
+duckdb $dp/git/a/data/mydb.duckdb << EOF
+-- Create view for financial metrics from parquet file
+CREATE OR REPLACE VIEW financial_metrics AS 
+SELECT 
+    rssd_id,
+    company_name,
+    type,
+    property_name,
+    qa_field_id,
+    field_type,
+    period_date,
+    duration,
+    value
+FROM read_parquet('$dp/git/a/data/financial_metrics.parquet');
+
+-- Create view for company information (extracted from financial_metrics)
+CREATE OR REPLACE VIEW company AS
+SELECT DISTINCT 
+    rssd_id,
+    company_name,
+    type,
+    'Unknown' as city,
+    'Unknown' as state
+FROM read_parquet('$dp/git/a/data/financial_metrics.parquet')
+WHERE company_name IS NOT NULL AND company_name != '';
+
+-- Create view for ticker to RSSD ID mapping
+CREATE OR REPLACE VIEW ticker_to_rssd AS
+SELECT 
+    ticker,
+    "RSSD ID" as rssd_id
+FROM read_parquet('$dp/git/a/data/ticker_to_rssd.parquet');
+EOF
