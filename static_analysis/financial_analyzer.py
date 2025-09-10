@@ -30,10 +30,12 @@ class FinancialAnalyzer:
     
     def __init__(self, db_path: str = None):
         """Initialize the analyzer with database connection."""
-        self.conn = duckdb.connect(db_path) if db_path else duckdb.connect()
+        # Default to the standard database location if no path provided
+        default_db = "/Users/x/dp/git/a/data/mydb.duckdb"
+        self.conn = duckdb.connect(db_path if db_path else default_db)
         
     def get_bank_info(self, rssd_id: str) -> Dict[str, str]:
-        """Get basic bank information."""
+        """Get basic bank information, using ticker if company name is unknown."""
         query = """
         SELECT company_name, rssd_id, type, city, state
         FROM company 
@@ -43,8 +45,21 @@ class FinancialAnalyzer:
         if not result:
             raise ValueError(f"Bank with RSSD ID {rssd_id} not found")
         
+        company_name = result[0]
+        
+        # If company name is generic (starts with "Bank "), try to get ticker
+        if company_name and company_name.startswith("Bank "):
+            ticker_query = """
+            SELECT ticker 
+            FROM ticker_to_rssd 
+            WHERE rssd_id = ?
+            """
+            ticker_result = self.conn.execute(ticker_query, [rssd_id]).fetchone()
+            if ticker_result and ticker_result[0]:
+                company_name = f"{ticker_result[0]} (RSSD {rssd_id})"
+        
         return {
-            "name": result[0],
+            "name": company_name,
             "rssd_id": str(result[1]),
             "type": result[2],
             "city": result[3],
@@ -71,8 +86,9 @@ class FinancialAnalyzer:
         
         df = self.conn.execute(query, [rssd_id]).df()
         
-        # Convert value to numeric where possible
-        df['numeric_value'] = pd.to_numeric(df['value'], errors='coerce')
+        # Clean and convert value to numeric (remove commas, handle formatting)
+        df['value_clean'] = df['value'].astype(str).str.replace(',', '').str.replace('$', '')
+        df['numeric_value'] = pd.to_numeric(df['value_clean'], errors='coerce')
         df['period_date'] = pd.to_datetime(df['period_date'])
         
         # Filter out non-numeric values for trend analysis
@@ -90,7 +106,7 @@ class FinancialAnalyzer:
         if len(values) < 3:
             return {
                 "trend_type": "insufficient_data",
-                "expected_change": 0.0,
+                "extrapolated_change": 0.0,
                 "actual_change": 0.0,
                 "is_remarkable": False,
                 "confidence": 0.0
@@ -102,7 +118,7 @@ class FinancialAnalyzer:
         if len(changes) < 2:
             return {
                 "trend_type": "insufficient_data",
-                "expected_change": 0.0,
+                "extrapolated_change": 0.0,
                 "actual_change": changes[0] if len(changes) > 0 else 0.0,
                 "is_remarkable": False,
                 "confidence": 0.0
@@ -119,17 +135,17 @@ class FinancialAnalyzer:
             
             if len(x) > 1 and np.std(y) > 0:
                 slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
-                expected_change = slope * len(x) + intercept
+                extrapolated_change = slope * len(x) + intercept
                 trend_strength = abs(r_value)
             else:
-                expected_change = np.mean(changes[:-1])
+                extrapolated_change = np.mean(changes[:-1])
                 trend_strength = 0.0
         else:
-            expected_change = changes[0]
+            extrapolated_change = changes[0]
             trend_strength = 0.0
         
         # Calculate deviation from expected
-        deviation = abs(actual_change - expected_change)
+        deviation = abs(actual_change - extrapolated_change)
         historical_std = np.std(changes[:-1]) if len(changes) > 2 else abs(actual_change)
         
         # Determine if remarkable based on multiple criteria
@@ -160,12 +176,12 @@ class FinancialAnalyzer:
         
         # Determine trend type
         if trend_strength > 0.7:
-            if expected_change > 0:
+            if extrapolated_change > 0:
                 trend_type = "strong_positive"
             else:
                 trend_type = "strong_negative"
         elif trend_strength > 0.3:
-            if expected_change > 0:
+            if extrapolated_change > 0:
                 trend_type = "weak_positive"
             else:
                 trend_type = "weak_negative"
@@ -174,7 +190,7 @@ class FinancialAnalyzer:
         
         return {
             "trend_type": trend_type,
-            "expected_change": expected_change,
+            "extrapolated_change": extrapolated_change,
             "actual_change": actual_change,
             "is_remarkable": is_remarkable,
             "confidence": confidence,
@@ -221,7 +237,7 @@ class FinancialAnalyzer:
             # Format the result
             metric_result = {
                 metric_name: {
-                    "expected_change_based_on_trend": f"{analysis['expected_change']:.1f}%",
+                    "extrapolated_change_based_on_trend": f"{analysis['extrapolated_change']:.1f}%",
                     "actual_change": f"{analysis['actual_change']:.1f}%"
                 }
             }
@@ -246,19 +262,22 @@ class ReportGenerator:
     def __init__(self, openrouter_api_key: str):
         """Initialize with OpenRouter API key."""
         self.llm = ChatOpenAI(
-            model="anthropic/claude-3-sonnet-20240229",
+            #model="anthropic/claude-3.5-sonnet",
+            model="openai/gpt-5",
             openai_api_key=openrouter_api_key,
             openai_api_base="https://openrouter.ai/api/v1",
             temperature=0.1
         )
     
-    def generate_report(self, analysis_data: Dict[str, Any]) -> str:
+    def generate_report(self, analysis_data: Dict[str, Any], ticker: str) -> str:
         """Generate HTML report using LLM analysis."""
         
         prompt = f"""
-You are a skilled bank analyst. Summarize the given financial metric data for this bank, noting the overall trend of the bank's business (if there is one) whether positive or negative. If there are multiple metrics which support each other, note that, e.g.: "Several metrics indicate a deterioration in loan quality, consistent with the decline in profit that has reversed the previous trend." If metrics contradict each other, that also should be noted: "A sharp decline in loan quality makes the stellar increase in profit all the more mysterious." If seeming contradictions can be explained by other metrics, then please explain. If the metrics are simply inconsistent with each other, that also would be worth noting.
+You are a skilled bank analyst. Summarize the given financial metric data for the bank {ticker}, noting the overall trend of {ticker}'s business (if there is one) whether positive or negative. If there are multiple metrics which support each other, note that, e.g.: "Several metrics indicate a deterioration in loan quality, consistent with the decline in profit that has reversed the previous trend." If metrics contradict each other, that also should be noted, e.g.: "A sharp decline in loan quality makes the stellar increase in profit all the more mysterious." If seeming contradictions can be explained by other metrics, then please explain. If the metrics are simply inconsistent with each other, that also would be worth noting.
 
 If the LLM is capable of producing inline graphs of key financial metrics, it should do so. If it can't do that, but believes such graphs would be helpful, simply include placeholders in the report text, e.g., {{graph "Net profit"}}.
+        
+If you refer to a metric's extrapolated value, do not use the word 'expected' (which could be interpreted as reflecting Wall Street analyst consensus) when really it was just a computed reasonable value; instead use language like 'extrapolated' or other words which make it clear the expectation was based on the preceding numbers and their trend, if there was one.
 
 Please generate a minimally styled HTML report. Use simple HTML tags and inline CSS for basic styling.
 
@@ -272,12 +291,23 @@ Financial Data:
         return response.content
 
 
+def get_openrouter_key() -> Optional[str]:
+    """Read OpenRouter API key from $HOME/.or file."""
+    try:
+        key_file = Path.home() / ".or"
+        if key_file.exists():
+            with open(key_file, 'r') as f:
+                return f.read().strip()
+        return None
+    except Exception:
+        return None
+
+
 def main():
     """Main function to run the financial analysis."""
     parser = argparse.ArgumentParser(description='Analyze financial metrics for a bank by RSSD ID')
     parser.add_argument('rssd_id', type=str, help='RSSD ID of the bank to analyze')
     parser.add_argument('--db-path', type=str, help='Path to DuckDB database file')
-    parser.add_argument('--openrouter-key', type=str, help='OpenRouter API key for LLM analysis')
     parser.add_argument('--output-dir', type=str, default='/Users/x/dp/git/a/data/firms_by_rssd_id',
                        help='Output directory for reports')
     
@@ -295,11 +325,21 @@ def main():
         print("\nAnalysis Result:")
         print(json.dumps(analysis_result, indent=2))
         
-        # Generate HTML report if API key provided
-        if args.openrouter_key:
+        # Try to get OpenRouter API key and generate HTML report
+        openrouter_key = get_openrouter_key()
+        if openrouter_key:
             print("\nGenerating HTML report...")
-            report_generator = ReportGenerator(args.openrouter_key)
-            html_report = report_generator.generate_report(analysis_result)
+            
+            # Extract ticker from bank name for report generation
+            bank_name = analysis_result.get("name", "")
+            if "(" in bank_name and bank_name.endswith(")"):
+                # Extract ticker from format like "CMA (RSSD 1199844)"
+                ticker = bank_name.split("(")[0].strip()
+            else:
+                ticker = bank_name
+            
+            report_generator = ReportGenerator(openrouter_key)
+            html_report = report_generator.generate_report(analysis_result, ticker)
             
             # Save report
             output_dir = Path(args.output_dir) / args.rssd_id
@@ -311,8 +351,9 @@ def main():
             
             print(f"Report saved to: {report_path}")
         else:
-            print("\nNo OpenRouter API key provided. Skipping HTML report generation.")
-            print("To generate HTML reports, provide --openrouter-key argument.")
+            print("\nerror: no OpenRouter API key found in $HOME/.or. Skipping HTML report generation.")
+            print("To generate HTML reports, create a file at $HOME/.or with your OpenRouter API key.")
+            sys.exit(1)
     
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
