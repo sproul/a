@@ -32,30 +32,32 @@ python financial_analyzer.py <RSSD_ID>
 
 ### Full Analysis with HTML Report
 ```bash
-python financial_analyzer.py <RSSD_ID> --openrouter-key <YOUR_API_KEY>
+python financial_analyzer.py <RSSD_ID> --db-path /path/to/data.parquet
 ```
 
-### Custom Database Path
+Note: HTML reports are automatically generated if an OpenRouter API key is found in `$HOME/.or`
+
+### Custom Database/Parquet Path
 ```bash
-python financial_analyzer.py <RSSD_ID> --db-path /path/to/database.db
+python financial_analyzer.py <RSSD_ID> --db-path /path/to/financial_metrics.parquet
 ```
 
 ### Custom Output Directory
 ```bash
-python financial_analyzer.py <RSSD_ID> --output-dir /custom/output/path
+python financial_analyzer.py <RSSD_ID> --db-path /path/to/data.parquet --output-dir /custom/output/path
 ```
 
 ## Example
 
 ```bash
-python financial_analyzer.py 370631 --openrouter-key sk-or-v1-xxx
+python financial_analyzer.py 1199844 --db-path /Users/x/dp/git/a/data/financial_metrics.parquet
 ```
 
 This will:
-1. Analyze all financial metrics for bank with RSSD ID 370631
+1. Analyze all financial metrics for bank with RSSD ID 1199844
 2. Generate JSON output showing remarkable vs unremarkable changes
-3. Create an HTML report using LLM analysis
-4. Save the report to `/Users/x/dp/git/a/data/firms_by_rssd_id/370631/report.htm`
+3. Create an HTML report using LLM analysis (if `$HOME/.or` contains OpenRouter API key)
+4. Save the report to `/Users/x/dp/git/a/data/firms_by_rssd_id/1199844/report.htm`
 
 ## Output Format
 
@@ -68,7 +70,7 @@ The program generates a JSON structure like:
     "remarkable_changes": [
         {
             "Net profit": {
-                "expected_change_based_on_trend": "3.7%",
+                "extrapolated_change_based_on_trend": "3.7%",
                 "actual_change": "21.3%"
             }
         }
@@ -76,7 +78,7 @@ The program generates a JSON structure like:
     "unremarkable_changes": [
         {
             "Interest margin": {
-                "expected_change_based_on_trend": "0.1%",
+                "extrapolated_change_based_on_trend": "0.1%",
                 "actual_change": "0.2%"
             }
         }
