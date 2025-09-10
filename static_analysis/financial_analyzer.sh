@@ -9,6 +9,23 @@ verbose_mode=''
 . python.inc
 while [ -n "$1" ]; do
         case "$1" in
+                -all)
+                        tr ',' ' ' < $script_dir/../util/spreadsheets/tickers_and_rssd_ids.csv > $t.0
+                        while read ticker rssd_id; do
+                                case "$ticker" in
+                                        TEST*|ticker)
+                                                continue
+                                        ;;
+                                        *)
+                                                echo   "$0 $debug_mode --ticker $ticker $rssd_id"
+                                                if [ -z "$dry_mode" ]; then
+                                                        $0 $debug_mode --ticker $ticker $rssd_id
+                                                fi
+                                        ;;
+                                esac
+                        done < $t.0
+                        exit 0
+                ;;
                 -dry)
                         dry_mode=-dry
                 ;;
@@ -32,6 +49,12 @@ while [ -n "$1" ]; do
         esac
         shift
 done
-python3 financial_analyzer.py $*
+cd $script_dir
+rssd_id=$1
+if [ -z "$rssd_id" ]; then
+        echo "FAIL: expected a value for \"rssd_id\" but saw nothing" 1>&2
+        exit 1
+fi
+python3 financial_analyzer.py $rssd_id
 exit
-$dp/git/a/static_analysis/financial_analyzer.sh -x 
+$dp/git/a/static_analysis/financial_analyzer.sh -dry -all
