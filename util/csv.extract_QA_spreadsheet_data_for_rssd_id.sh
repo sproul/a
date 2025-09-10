@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# given a spreadsheet, split the data out by firm and save the resulting firm-specific slice at $dp/git/a/data/firms_by_rssd_id/-512/YYYY-MM-DD.csv
+#
+# This makes it easy to see if the data have been updated (and therefore a new static report should be generated.
+#
+# This also raises the possibility of reporting what fields were updated, since that also is easy to extract.
+# 
 debug_mode=''
 dry_mode=''
 t=`mktemp`; trap "rm $t*" EXIT

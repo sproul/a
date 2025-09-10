@@ -1,0 +1,10 @@
+#!/bin/bash
+max_age_in_days="$1"
+fn="$2"
+
+max_age_in_seconds=`perl -e "print $max_age_in_days * 24 * 60 * 60"`
+
+age_in_seconds.alert_if_gt $max_age_in_seconds "$fn"
+
+exit
+bx $dp/git/bin/age_in_days.alert_if_gt  200 $dp/git/bin/lm.q

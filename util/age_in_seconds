@@ -1,0 +1,20 @@
+#!/bin/sh
+fn="$1"
+if [ ! -r "$fn" ]; then
+        echo "$0: error: $fn: No such file" 1>&2
+        exit 1
+fi
+
+case "$OS" in
+        mac)
+                perl -l -e '$mtime = (stat($ARGV[0]))[9]; print time - $mtime' -- "$fn"
+        ;;
+        *)
+                NOW=`date +%s`
+                OLD=`stat -c %Y "$fn"`
+                expr $NOW - $OLD
+        ;;
+esac
+
+exit
+$dp/git/fin_doc_parser/server/src/age_in_seconds /Users/x/dp/git/data/qa_relevant_symbols.dat

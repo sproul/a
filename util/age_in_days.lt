@@ -1,0 +1,23 @@
+#!/bin/bash
+max_age="$1"
+fn="$2"
+
+if [ ! -f "$fn" ]; then
+        if [ ! -d "$fn" ]; then
+                echo "$0: error: could not find \"$fn\"" 1>&2
+                exit 1
+        fi
+fi
+if [ ! -r "$fn" ]; then
+        chmod +r "$fn"
+fi
+age=`age_in_days "$fn"`
+if [ "$age" -lt "$max_age" ]; then
+        exit 0
+else
+        echo "$fn is $max_age days or older" 1>&2
+        exit 1
+fi
+
+exit
+bx $dp/git/bin/age_in_days.lt 300 /net/slcipcm.us.oracle.com/scratch/nsproul/dp/git/diagnostic-tool/dt.tar

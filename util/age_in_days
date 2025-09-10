@@ -1,0 +1,10 @@
+#!/bin/bash
+fn="$@"
+if [ ! -r "$fn" ]; then
+        echo "$0: error: $fn: No such file" 1>&2
+        exit 1
+fi
+age_in_seconds=`age_in_seconds "$fn"`
+expr $age_in_seconds / 86400
+exit
+sh -x $dp/git/bin/age_in_days $dp/git/bin/lm.q

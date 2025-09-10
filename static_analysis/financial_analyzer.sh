@@ -57,4 +57,6 @@ if [ -z "$rssd_id" ]; then
 fi
 python3 financial_analyzer.py $rssd_id
 exit
+$dp/git/a/static_analysis/financial_analyzer.sh 118490
+exit
 $dp/git/a/static_analysis/financial_analyzer.sh -dry -all
