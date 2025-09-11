@@ -50,11 +50,25 @@ while [ -n "$1" ]; do
         shift
 done
 cd $script_dir
-rssd_id=$1
-if [ -z "$rssd_id" ]; then
-        echo "FAIL: expected a value for \"rssd_id\" but saw nothing" 1>&2
+input_param=$1
+if [ -z "$input_param" ]; then
+        echo "FAIL: expected a value for \"rssd_id\" or \"ticker\" but saw nothing" 1>&2
         exit 1
 fi
+
+# Check if input is numeric (rssd_id) or alphabetic (ticker)
+if [[ "$input_param" =~ ^[0-9]+$ ]]; then
+        # Input is numeric, treat as rssd_id
+        rssd_id=$input_param
+else
+        # Input is alphabetic, treat as ticker and derive rssd_id
+        rssd_id=$(rssd_ids.sh -from_ticker "$input_param")
+        if [ $? -ne 0 ]; then
+                echo "FAIL: could not derive rssd_id from ticker \"$input_param\"" 1>&2
+                exit 1
+        fi
+fi
+
 python3 financial_analyzer.py $rssd_id
 exit
 $dp/git/a/static_analysis/financial_analyzer.sh 118490
