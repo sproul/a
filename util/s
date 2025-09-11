@@ -13,10 +13,8 @@ cd "$script_dir"
 Status()
 {
         local psg_arg=$1
-        psg $psg_arg node $dp/git/a/node_modules/.bin/ts-node src/index.ts || true
         psg $psg_arg node $dp/git/a/node_modules/.bin/nodemon src/index.ts || true
-        psg $psg_arg node -r ./node_modules/ts-node/register/transpile-only $dp/git/a/src/index.ts || true
-        psg $psg_arg node $dp/git/a/node_modules/.bin/ts-node src/index.ts || true
+        psg $psg_arg node $dp/git/a/node_modules/.bin/ts-node src/index.ts || psg $psg_arg node -r ./node_modules/ts-node/register/transpile-only $dp/git/a/src/index.ts || psg $psg_arg node $dp/git/a/node_modules/.bin/ts-node src/index.ts || psg node dist/index.js || true
 }
 
 Transpile_all()

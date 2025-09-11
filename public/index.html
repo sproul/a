@@ -232,6 +232,31 @@
             color: #ff6b6b;
             font-weight: 500;
         }
+        
+        /* Metric link styling */
+        .metric-link {
+            color: #4dabf7;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .metric-link:hover {
+            color: #74c0fc;
+            text-decoration: none;
+        }
+        
+        /* Graph display styling */
+        .graph-display {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #2a2a2a;
+            border-radius: 6px;
+            border-left: 4px solid #4dabf7;
+            font-family: monospace;
+            font-size: 13px;
+            color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
@@ -274,6 +299,19 @@
             const chatLog = document.getElementById('chat-log');
             
             try {
+                // First, set the current firm context
+                await fetch('/api/report-context', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ticker: ticker,
+                        rssd_id: rssd_id,
+                        content: '' // We'll send the actual content after we get it
+                    })
+                });
+                
                 // Add loading message
                 const loadingDiv = document.createElement('div');
                 loadingDiv.innerHTML = `<strong>System:</strong> Loading ${ticker} report...`;
@@ -325,6 +363,320 @@
                 chatLog.appendChild(errorDiv);
                 chatLog.scrollTop = chatLog.scrollHeight;
             }
+        }
+
+
+        // Graph creation function with toggle functionality and real data
+        async function createGraph(container, ticker, rssd_id, metric) {
+            // Check if graph is already displayed
+            if (container.style.display === 'block' && container.children.length > 0) {
+                // Hide the graph
+                container.style.display = 'none';
+                return;
+            }
+            
+            // If container is empty, create the graph
+            if (container.children.length === 0) {
+                // Create loading indicator
+                const loadingDiv = document.createElement('div');
+                loadingDiv.style.cssText = `
+                    background: #2a2a2a;
+                    border: 2px solid #4a9eff;
+                    border-radius: 8px;
+                    padding: 20px;
+                    margin: 10px 0;
+                    text-align: center;
+                    color: #4a9eff;
+                `;
+                loadingDiv.textContent = `Loading ${metric} data...`;
+                container.appendChild(loadingDiv);
+                container.style.display = 'block';
+                
+                try {
+                    // Fetch real data from API
+                    const response = await fetch(`/api/metric-data/${ticker}/${rssd_id}/${encodeURIComponent(metric)}`);
+                    const data = await response.json();
+                    
+                    // Remove loading indicator
+                    container.removeChild(loadingDiv);
+                    
+                    if (!response.ok || !data.data || data.data.length === 0) {
+                        // Show error message
+                        const errorDiv = document.createElement('div');
+                        errorDiv.style.cssText = `
+                            background: #2a2a2a;
+                            border: 2px solid #ff4a4a;
+                            border-radius: 8px;
+                            padding: 20px;
+                            margin: 10px 0;
+                            text-align: center;
+                            color: #ff4a4a;
+                        `;
+                        errorDiv.textContent = `No data available for ${metric}`;
+                        container.appendChild(errorDiv);
+                        return;
+                    }
+                    
+                    // Create graph container with styling
+                    const graphDiv = document.createElement('div');
+                    graphDiv.className = 'metric-graph';
+                    graphDiv.style.cssText = `
+                        background: #2a2a2a;
+                        border: 2px solid #4a9eff;
+                        border-radius: 8px;
+                        padding: 20px;
+                        margin: 10px 0;
+                        min-height: 300px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                    `;
+                    
+                    // Create title
+                    const title = document.createElement('h3');
+                    title.textContent = `${metric} - ${ticker}`;
+                    title.style.cssText = `
+                        color: #4a9eff;
+                        margin: 0 0 20px 0;
+                        font-size: 18px;
+                        text-align: center;
+                    `;
+                    
+                    // Create chart area
+                    const chartArea = document.createElement('div');
+                    chartArea.style.cssText = `
+                        width: 100%;
+                        height: 200px;
+                        border: 1px solid #444;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        background: #1a1a1a;
+                    `;
+                    
+                    // Create SVG chart with real data
+                    const svg = createSVGChartFromData(data.data, metric);
+                    chartArea.appendChild(svg);
+                    
+                    // Create info text
+                    const info = document.createElement('p');
+                    info.textContent = `Displaying ${data.count} data points for ${metric} - ${ticker} (RSSD ID: ${rssd_id})`;
+                    info.style.cssText = `
+                        color: #ccc;
+                        margin: 15px 0 0 0;
+                        font-size: 14px;
+                        text-align: center;
+                    `;
+                    
+                    // Assemble the graph
+                    graphDiv.appendChild(title);
+                    graphDiv.appendChild(chartArea);
+                    graphDiv.appendChild(info);
+                    
+                    // Insert into container
+                    container.appendChild(graphDiv);
+                    
+                } catch (error) {
+                    // Remove loading indicator and show error
+                    if (container.contains(loadingDiv)) {
+                        container.removeChild(loadingDiv);
+                    }
+                    
+                    const errorDiv = document.createElement('div');
+                    errorDiv.style.cssText = `
+                        background: #2a2a2a;
+                        border: 2px solid #ff4a4a;
+                        border-radius: 8px;
+                        padding: 20px;
+                        margin: 10px 0;
+                        text-align: center;
+                        color: #ff4a4a;
+                    `;
+                    errorDiv.textContent = `Error loading data for ${metric}: ${error.message}`;
+                    container.appendChild(errorDiv);
+                }
+            }
+            
+            // Show the graph
+            container.style.display = 'block';
+        }
+
+        // Generate sample data points for demonstration
+        function generateSampleData() {
+            const points = [];
+            const baseValue = 100;
+            let currentValue = baseValue;
+            
+            for (let i = 0; i < 12; i++) {
+                // Add some realistic variation
+                const change = (Math.random() - 0.5) * 20;
+                currentValue += change;
+                points.push(Math.max(0, currentValue));
+            }
+            
+            return points;
+        }
+
+        // Create an SVG line chart from real financial data
+        function createSVGChartFromData(dataPoints, metric) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '100%');
+            svg.setAttribute('height', '100%');
+            svg.setAttribute('viewBox', '0 0 400 180');
+            
+            if (!dataPoints || dataPoints.length === 0) {
+                // Show "No data" message
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', '200');
+                text.setAttribute('y', '90');
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('fill', '#666');
+                text.textContent = 'No data available';
+                svg.appendChild(text);
+                return svg;
+            }
+            
+            const values = dataPoints.map(d => d.value);
+            const maxValue = Math.max(...values);
+            const minValue = Math.min(...values);
+            const range = maxValue - minValue || 1;
+            
+            // Create path for line chart
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            let pathData = '';
+            
+            dataPoints.forEach((dataPoint, index) => {
+                const x = (index / (dataPoints.length - 1)) * 360 + 20;
+                const y = 160 - ((dataPoint.value - minValue) / range) * 140;
+                
+                if (index === 0) {
+                    pathData += `M ${x} ${y}`;
+                } else {
+                    pathData += ` L ${x} ${y}`;
+                }
+            });
+            
+            path.setAttribute('d', pathData);
+            path.setAttribute('stroke', '#4a9eff');
+            path.setAttribute('stroke-width', '2');
+            path.setAttribute('fill', 'none');
+            
+            // Add data points with hover information
+            dataPoints.forEach((dataPoint, index) => {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                const x = (index / (dataPoints.length - 1)) * 360 + 20;
+                const y = 160 - ((dataPoint.value - minValue) / range) * 140;
+                
+                circle.setAttribute('cx', x.toString());
+                circle.setAttribute('cy', y.toString());
+                circle.setAttribute('r', '3');
+                circle.setAttribute('fill', '#4a9eff');
+                
+                // Add title for hover tooltip
+                const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+                title.textContent = `${dataPoint.date}: ${dataPoint.value}`;
+                circle.appendChild(title);
+                
+                svg.appendChild(circle);
+            });
+            
+            svg.appendChild(path);
+            
+            // Add axis labels if we have data
+            if (dataPoints.length > 0) {
+                // Y-axis labels (min/max values)
+                const minLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                minLabel.setAttribute('x', '15');
+                minLabel.setAttribute('y', '165');
+                minLabel.setAttribute('fill', '#666');
+                minLabel.setAttribute('font-size', '10');
+                minLabel.textContent = minValue.toFixed(1);
+                svg.appendChild(minLabel);
+                
+                const maxLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                maxLabel.setAttribute('x', '15');
+                maxLabel.setAttribute('y', '25');
+                maxLabel.setAttribute('fill', '#666');
+                maxLabel.setAttribute('font-size', '10');
+                maxLabel.textContent = maxValue.toFixed(1);
+                svg.appendChild(maxLabel);
+                
+                // Date labels (first and last)
+                const firstDate = new Date(dataPoints[0].date).toLocaleDateString();
+                const lastDate = new Date(dataPoints[dataPoints.length - 1].date).toLocaleDateString();
+                
+                const firstDateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                firstDateLabel.setAttribute('x', '20');
+                firstDateLabel.setAttribute('y', '175');
+                firstDateLabel.setAttribute('fill', '#666');
+                firstDateLabel.setAttribute('font-size', '10');
+                firstDateLabel.textContent = firstDate;
+                svg.appendChild(firstDateLabel);
+                
+                const lastDateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                lastDateLabel.setAttribute('x', '320');
+                lastDateLabel.setAttribute('y', '175');
+                lastDateLabel.setAttribute('fill', '#666');
+                lastDateLabel.setAttribute('font-size', '10');
+                lastDateLabel.setAttribute('text-anchor', 'end');
+                lastDateLabel.textContent = lastDate;
+                svg.appendChild(lastDateLabel);
+            }
+            
+            return svg;
+        }
+
+        // Create an SVG line chart (legacy function for sample data)
+        function createSVGChart(dataPoints, metric) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '100%');
+            svg.setAttribute('height', '100%');
+            svg.setAttribute('viewBox', '0 0 400 180');
+            
+            const maxValue = Math.max(...dataPoints);
+            const minValue = Math.min(...dataPoints);
+            const range = maxValue - minValue || 1;
+            
+            // Create path for line chart
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            let pathData = '';
+            
+            dataPoints.forEach((value, index) => {
+                const x = (index / (dataPoints.length - 1)) * 360 + 20;
+                const y = 160 - ((value - minValue) / range) * 140;
+                
+                if (index === 0) {
+                    pathData += `M ${x} ${y}`;
+                } else {
+                    pathData += ` L ${x} ${y}`;
+                }
+            });
+            
+            path.setAttribute('d', pathData);
+            path.setAttribute('stroke', '#4a9eff');
+            path.setAttribute('stroke-width', '2');
+            path.setAttribute('fill', 'none');
+            
+            // Add data points
+            dataPoints.forEach((value, index) => {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                const x = (index / (dataPoints.length - 1)) * 360 + 20;
+                const y = 160 - ((value - minValue) / range) * 140;
+                
+                circle.setAttribute('cx', x.toString());
+                circle.setAttribute('cy', y.toString());
+                circle.setAttribute('r', '3');
+                circle.setAttribute('fill', '#4a9eff');
+                
+                svg.appendChild(circle);
+            });
+            
+            svg.appendChild(path);
+            
+            return svg;
         }
 
         // Load navigation links when the page loads

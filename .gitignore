@@ -6,4 +6,4 @@ log/**
 node_modules
 dist
 .env
-public/**
+public/firms_by_rssd_id/**
