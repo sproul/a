@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# given a spreadsheet, split the data out by firm and save the resulting firm-specific slice at $dp/git/a/data/firms_by_rssd_id/-512/YYYY-MM-DD.csv
+# given a spreadsheet, split the data out by firm and save the resulting firm-specific slice at $dp/git/a/public/firms_by_rssd_id/-512/YYYY-MM-DD.csv
 #
 # This makes it easy to see if the data have been updated (and therefore a new static report should be generated.
 #

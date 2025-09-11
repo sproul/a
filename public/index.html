@@ -7,15 +7,236 @@
     <link rel="icon" href="/favicon.jpg" type="image/jpeg">
     <script src="/htmx.min.js" defer></script>
     <style>
-        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; }
-        #chat-log { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; margin-bottom: 10px; }
-        form { display: flex; }
-        input { flex-grow: 1; padding: 8px; }
-        button { padding: 8px; }
+        html, body { 
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        #navigation-links { 
+            margin-bottom: 20px; 
+            padding: 15px; 
+            border-bottom: 1px solid #333; 
+            display: none; 
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        #navigation-links.visible { display: block; }
+        
+        #navigation-links button.report-link { 
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 15px; 
+            margin-bottom: 8px;
+            padding: 10px 16px; 
+            background-color: #3a3a3a; 
+            border-radius: 6px; 
+            color: #ffffff; 
+            font-weight: 500; 
+            transition: all 0.2s ease;
+            border: 1px solid #4a4a4a;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.2;
+        }
+        
+        #navigation-links button.report-link:hover { 
+            background-color: #4a4a4a; 
+            border-color: #5a5a5a;
+            transform: translateY(-1px);
+        }
+        
+        .recently-updated-label {
+            font-size: 10px;
+            font-weight: 400;
+            color: #00cc66;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        #chat-log { 
+            border: 1px solid #444; 
+            padding: 15px; 
+            flex: 1;
+            overflow-y: scroll; 
+            margin-bottom: 15px; 
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            font-size: 14px;
+            min-height: 200px;
+        }
+        
+        #chat-log div {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        #chat-log div:nth-child(even) {
+            background-color: #333;
+        }
+        
+        form { 
+            display: flex; 
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        
+        input { 
+            flex-grow: 1; 
+            padding: 12px 16px; 
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #666;
+            background-color: #333;
+        }
+        
+        input::placeholder {
+            color: #888;
+        }
+        
+        button { 
+            padding: 12px 20px; 
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        
+        button:hover {
+            background-color: #0052a3;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        /* Scrollbar styling for webkit browsers */
+        #chat-log::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #chat-log::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        #chat-log::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        
+        #chat-log::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+        
+        /* Report content styling for dark mode */
+        .report-content {
+            margin-top: 10px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .report-content h1 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+        
+        .report-content h2 {
+            color: #e0e0e0;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+        
+        .report-content h3 {
+            color: #cccccc;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .report-content p {
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+        
+        .report-content ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .report-content li {
+            color: #e0e0e0;
+            margin-bottom: 8px;
+        }
+        
+        .report-content .section {
+            margin-bottom: 25px;
+        }
+        
+        .report-content .highlight {
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+        
+        .report-content .positive {
+            color: #51cf66;
+            font-weight: 500;
+        }
+        
+        .report-content .negative {
+            color: #ff6b6b;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
     <h1>Appleby Bank Analysis Chat</h1>
+    <div id="navigation-links"></div>
     <div id="chat-log">
         <div>Welcome! Type a message and press Enter.</div>
     </div>
@@ -23,5 +244,91 @@
         <input type="text" name="chat_input" placeholder="Type your message..." autofocus>
         <button type="submit">Send</button>
     </form>
+
+    <script>
+        // Load ticker/rssd_id pairs and generate navigation links
+        async function loadNavigationLinks() {
+            try {
+                const response = await fetch('/api/ticker-pairs');
+                const pairs = await response.json();
+                
+                if (pairs && pairs.length > 0) {
+                    const navigationDiv = document.getElementById('navigation-links');
+                    const links = pairs.map(pair => 
+                        `<button class="report-link" data-ticker="${pair.ticker}" data-rssd-id="${pair.rssd_id}" onclick="loadReport('${pair.rssd_id}', '${pair.ticker}')">
+                            ${pair.ticker}
+                            <span class="recently-updated-label">Recently updated</span>
+                        </button>`
+                    ).join('');
+                    
+                    navigationDiv.innerHTML = links;
+                    navigationDiv.classList.add('visible');
+                }
+            } catch (error) {
+                console.error('Error loading navigation links:', error);
+            }
+        }
+
+        // Load report content inline in chat window
+        async function loadReport(rssd_id, ticker) {
+            const chatLog = document.getElementById('chat-log');
+            
+            try {
+                // Add loading message
+                const loadingDiv = document.createElement('div');
+                loadingDiv.innerHTML = `<strong>System:</strong> Loading ${ticker} report...`;
+                chatLog.appendChild(loadingDiv);
+                chatLog.scrollTop = chatLog.scrollHeight;
+                
+                const response = await fetch(`/api/report/${rssd_id}`);
+                const data = await response.json();
+                
+                if (response.ok && data.html && data.text) {
+                    // Remove loading message
+                    chatLog.removeChild(loadingDiv);
+                    
+                    // Add user action message
+                    const userDiv = document.createElement('div');
+                    userDiv.innerHTML = `<strong>You:</strong> Show me the ${ticker} report`;
+                    chatLog.appendChild(userDiv);
+                    
+                    // Add report content with HTML formatting
+                    const reportDiv = document.createElement('div');
+                    reportDiv.innerHTML = `<strong>System:</strong> <div class="report-content">${data.html}</div>`;
+                    chatLog.appendChild(reportDiv);
+                    
+                    // Send report content to server for LLM context (use text version)
+                    fetch('/api/report-context', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            ticker: ticker,
+                            rssd_id: rssd_id,
+                            content: data.text
+                        })
+                    }).catch(err => console.error('Error sending report context:', err));
+                } else {
+                    // Remove loading message and show error
+                    chatLog.removeChild(loadingDiv);
+                    const errorDiv = document.createElement('div');
+                    errorDiv.innerHTML = `<strong>System:</strong> Error loading ${ticker} report: ${data.error || 'Report not found'}`;
+                    chatLog.appendChild(errorDiv);
+                }
+                
+                chatLog.scrollTop = chatLog.scrollHeight;
+            } catch (error) {
+                console.error('Error loading report:', error);
+                const errorDiv = document.createElement('div');
+                errorDiv.innerHTML = `<strong>System:</strong> Error loading ${ticker} report: ${error.message}`;
+                chatLog.appendChild(errorDiv);
+                chatLog.scrollTop = chatLog.scrollHeight;
+            }
+        }
+
+        // Load navigation links when the page loads
+        document.addEventListener('DOMContentLoaded', loadNavigationLinks);
+    </script>
 </body>
 </html>

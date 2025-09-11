@@ -94,7 +94,7 @@ fi
 Extract_rssd_ids > $t.0
 while read rssd_id; do
 	echo "OK rssd_id=$rssd_id" 1>&2
-	out_fn=$script_dir/../data/firms_by_rssd_id/$rssd_id/`date '+%Y-%m-%d'`.csv
+	out_fn=$script_dir/../public/firms_by_rssd_id/$rssd_id/`date '+%Y-%m-%d'`.csv
 	dir=`dirname $out_fn`
 	if mkdir -p $dir; then
 		echo "OK mkdir -p $dir" 1>&2
@@ -115,7 +115,7 @@ while read rssd_id; do
 			echo "FAIL load_parquet.sh $debug_mode $out_fn $script_dir/../data" 1>&2
 			exit 1
 		fi
-		report_fn=$dp/git/a/data/firms_by_rssd_id/$rssd_id/report.htm
+		report_fn=$dp/git/a/public/firms_by_rssd_id/$rssd_id/report.htm
 		rm -f $report_fn
 		if financial_analyzer.sh -x $rssd_id > $t.out 2>&1; then
 			echo "OK financial_analyzer.sh $rssd_id" 1>&2
@@ -130,7 +130,9 @@ while read rssd_id; do
 			else
 				echo "OK: process_spreadsheet.sh saw generated report at \"$report_fn\"" 1>&2
 				ticker=`rssd_ids.sh -from_rssd_id $rssd_id`
-				echo "$ticker,$rssd_id" >> $updated_ticker_rssd_id_pairs_fn
+                                if ! grep "$ticker,$rssd_id" $updated_ticker_rssd_id_pairs_fn; then
+                                        echo "$ticker,$rssd_id" >> $updated_ticker_rssd_id_pairs_fn
+                                fi
                         fi
 		else
 			echo "FAIL financial_analyzer.sh $rssd_id" 1>&2

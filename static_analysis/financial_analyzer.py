@@ -308,7 +308,7 @@ def main():
     parser = argparse.ArgumentParser(description='Analyze financial metrics for a bank by RSSD ID')
     parser.add_argument('rssd_id', type=str, help='RSSD ID of the bank to analyze')
     parser.add_argument('--db-path', type=str, help='Path to DuckDB database file')
-    parser.add_argument('--output-dir', type=str, default='/Users/x/dp/git/a/data/firms_by_rssd_id',
+    parser.add_argument('--output-dir', type=str, default='/Users/x/dp/git/a/public/firms_by_rssd_id',
                        help='Output directory for reports')
     
     args = parser.parse_args()

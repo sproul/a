@@ -57,7 +57,7 @@ This will:
 1. Analyze all financial metrics for bank with RSSD ID 1199844
 2. Generate JSON output showing remarkable vs unremarkable changes
 3. Create an HTML report using LLM analysis (if `$HOME/.or` contains OpenRouter API key)
-4. Save the report to `/Users/x/dp/git/a/data/firms_by_rssd_id/1199844/report.htm`
+4. Save the report to `/Users/x/dp/git/a/public/firms_by_rssd_id/1199844/report.htm`
 
 ## Output Format
 

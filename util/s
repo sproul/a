@@ -10,24 +10,33 @@ script_dir=$(dirname $BASH_SOURCE|sed -e 's;^/$;;')	 # if the containing dir is 
 log_dir=$script_dir/../log
 cd "$script_dir"
 
+Status()
+{
+        local psg_arg=$1
+        psg $psg_arg node $dp/git/a/node_modules/.bin/ts-node src/index.ts || true
+        psg $psg_arg node $dp/git/a/node_modules/.bin/nodemon src/index.ts || true
+        psg $psg_arg node -r ./node_modules/ts-node/register/transpile-only $dp/git/a/src/index.ts || true
+        psg $psg_arg node $dp/git/a/node_modules/.bin/ts-node src/index.ts || true
+}
+
 Transpile_all()
 {
-	# Step 1: Transpile all TypeScript code.
-	# The 'set -e' command will cause the script to exit automatically if this fails.
-	echo "OK Transpiling TypeScript..."
-	npm run build
-	echo "OK TypeScript transpiled successfully."
+        # Step 1: Transpile all TypeScript code.
+        # The 'set -e' command will cause the script to exit automatically if this fails.
+        echo "OK Transpiling TypeScript..."
+        npm run build
+        echo "OK TypeScript transpiled successfully."
 }
 
 Rename_old_log()
 {
-	log_fn=$log_dir/out
-	if [ -f "$log_fn" ]; then
-		ts=`date '+%Y.%m.%d.%H.%M'`
+        log_fn=$log_dir/out
+        if [ -f "$log_fn" ]; then
+                ts=`date '+%Y.%m.%d.%H.%M'`
                 if mv $log_fn $log_fn.$ts; then
-			echo "OK mv $log_fn $log_fn.$ts" 1>&2
-		else
-			echo "FAIL mv $log_fn $log_fn.$ts" 1>&2
+                        echo "OK mv $log_fn $log_fn.$ts" 1>&2
+                else
+                        echo "FAIL mv $log_fn $log_fn.$ts" 1>&2
                         exit 1
                 fi
                 Rm_excess_logs
@@ -38,49 +47,43 @@ Rm_excess_logs()
 {
         max_logs_to_keep=3
         ls | tail -n +$max_logs_to_keep > $t.excess_logs
-	for f in `cat "$t.excess_logs"`; do
-		ff="$log_dir/$f"
-		if rm $ff; then
-			echo "OK rm $ff" 1>&2
-		else
-			echo "FAIL rm $ff" 1>&2
-			exit 1
-		fi
-	done
+        for f in `cat "$t.excess_logs"`; do
+                ff="$log_dir/$f"
+                if rm $ff; then
+                        echo "OK rm $ff" 1>&2
+                else
+                        echo "FAIL rm $ff" 1>&2
+                        exit 1
+                fi
+        done
 }
 
 
-Stop_old()
+Stop()
 {
-	# Step 2: Kill any old server processes to free up the port.
-	echo "OK Stopping old server processes..."
-	# Use pkill to find and kill processes by name. The '-f' flag matches against the full command line.
-	# The `|| true` part ensures that the script doesn't exit if no processes are found.
-	Rename_old_log
-        psg -9 "node src/index.ts" || true
-        psg -9 "nodemon src/index.ts" || true
-	echo "OK any old processes stopped."
+        Status -9
+        Status
 }
 
 Start()
 {
-	echo "OK Starting development server with 'npm run dev'..."
-	(
-	mkdir  -p $log_dir
-	if [ ! -d $log_dir ]; then
-		echo "FAIL could not find log directory $log_dir" 1>&2
-		exit 1
-	fi
-	if mkdir -p $log_dir; then
-		echo "OK mkdir -p $log_dir" 1>&2
-	else
-		echo "FAIL mkdir -p $log_dir" 1>&2
-		exit 1
-	fi
-	cd $log_dir || exit 1
+        echo "OK Starting development server with 'npm run dev'..."
+        (
+        mkdir  -p $log_dir
+        if [ ! -d $log_dir ]; then
+                echo "FAIL could not find log directory $log_dir" 1>&2
+                exit 1
+        fi
+        if mkdir -p $log_dir; then
+                echo "OK mkdir -p $log_dir" 1>&2
+        else
+                echo "FAIL mkdir -p $log_dir" 1>&2
+                exit 1
+        fi
+        cd $log_dir || exit 1
         Rename_old_log
-	)
-	python_activation_script_fn=$script_dir/../../../venv_qr311ab/bin/activate
+        )
+        python_activation_script_fn=$script_dir/../../../venv_qr311ab/bin/activate
         if [ ! -f "$python_activation_script_fn" ]; then
                 echo "FAIL: expected file at \"$python_activation_script_fn\"" 1>&2
                 exit 1
@@ -88,15 +91,15 @@ Start()
                 echo "OK found $python_activation_script_fn" 1>&2
         fi
         . $python_activation_script_fn
-	npm run dev > $log_dir/log.out 2>&1 &
-	sleep 3
-	patt='ts-node src/index.ts'
-	if ! psg "$patt" | grep -v ^USER; then
-		echo "FAIL could not find $patt process" 1>&2
-		cat $log_dir/log.out
-	else
-		echo "OK psg $patt" 1>&2
-	fi
+        npm run dev > $log_dir/log.out 2>&1 &
+        sleep 3
+        patt='ts-node src/index.ts'
+        if ! psg "$patt" | grep -v ^USER; then
+                echo "FAIL could not find $patt process" 1>&2
+                cat $log_dir/log.out
+        else
+                echo "OK psg $patt" 1>&2
+        fi
 }
 
 debug_mode=''
@@ -131,20 +134,19 @@ done
 op=${1-1}
 case "$op" in
 	0)
-		Stop_old
+		Stop
 	;;
 	1)
 		Transpile_all
 		Start
 	;;
 	2)
-		Stop_old
+		Stop
 		Transpile_all
 		Start
 	;;
         s|status)
-                psg node $dp/git/a/node_modules/.bin/ts-node src/index.ts
-                psg node $dp/git/a/node_modules/.bin/nodemon src/index.ts
+                Status
         ;;
 	*)
 		echo "FAIL did not recognize op \"$op\"" 1>&2

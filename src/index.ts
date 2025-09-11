@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+import fs from 'fs';
 import { ChatOpenAI } from '@langchain/openai';
 import logger from './logger';
 import { getLogger, runWithRequestLogger } from './requestLogger';
@@ -32,6 +33,97 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Function to read and parse ticker/rssd_id pairs from CSV
+function getTickerRssdPairs(): Array<{ticker: string, rssd_id: string}> {
+    const csvPath = path.join(__dirname, '../public/updated_ticker_rssd_id_pairs.csv');
+    
+    try {
+        if (!fs.existsSync(csvPath)) {
+            return [];
+        }
+        
+        const csvContent = fs.readFileSync(csvPath, 'utf-8').trim();
+        if (!csvContent) {
+            return [];
+        }
+        
+        const lines = csvContent.split('\n').filter(line => line.trim());
+        const pairs: Array<{ticker: string, rssd_id: string}> = [];
+        
+        for (const line of lines) {
+            const [ticker, rssd_id] = line.split(',').map(s => s.trim());
+            if (ticker && rssd_id) {
+                pairs.push({ ticker, rssd_id });
+            }
+        }
+        
+        return pairs;
+    } catch (error) {
+        logger.error('Error reading ticker/rssd_id pairs:', error);
+        return [];
+    }
+}
+
+// API endpoint to get ticker/rssd_id pairs
+app.get('/api/ticker-pairs', (req, res) => {
+    const pairs = getTickerRssdPairs();
+    res.json(pairs);
+});
+
+// Function to extract content from HTML report files
+function extractReportContent(rssd_id: string): {html: string, text: string} | null {
+    const reportPath = path.join(__dirname, `../public/firms_by_rssd_id/${rssd_id}/report.htm`);
+    
+    try {
+        if (!fs.existsSync(reportPath)) {
+            return null;
+        }
+        
+        const htmlContent = fs.readFileSync(reportPath, 'utf-8');
+        
+        // Extract content from body tag
+        const bodyMatch = htmlContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+        if (!bodyMatch) {
+            return null;
+        }
+        
+        let htmlBody = bodyMatch[1].trim();
+        
+        // Convert HTML to readable text for LLM context (keep existing logic)
+        let textContent = htmlBody
+            .replace(/<h1[^>]*>/gi, '\n# ')
+            .replace(/<h2[^>]*>/gi, '\n## ')
+            .replace(/<h3[^>]*>/gi, '\n### ')
+            .replace(/<\/h[1-6]>/gi, '\n')
+            .replace(/<p[^>]*>/gi, '\n')
+            .replace(/<\/p>/gi, '\n')
+            .replace(/<li[^>]*>/gi, '\n• ')
+            .replace(/<\/li>/gi, '')
+            .replace(/<ul[^>]*>|<\/ul>/gi, '')
+            .replace(/<div[^>]*>|<\/div>/gi, '\n')
+            .replace(/<[^>]*>/g, '') // Remove remaining HTML tags
+            .replace(/\n\s*\n/g, '\n') // Remove extra blank lines
+            .trim();
+        
+        return { html: htmlBody, text: textContent };
+    } catch (error) {
+        logger.error('Error reading report file:', error);
+        return null;
+    }
+}
+
+// API endpoint to get report content
+app.get('/api/report/:rssd_id', (req, res) => {
+    const rssd_id = req.params.rssd_id;
+    const content = extractReportContent(rssd_id);
+    
+    if (!content) {
+        return res.status(404).json({ error: 'Report not found' });
+    }
+    
+    res.json({ html: content.html, text: content.text, rssd_id });
+});
+
 function finish(res: express.Response, userInput: string, logMessage: string, error?: any, userMessage?: string) {
     const logger = getLogger();
     let message: string | null
@@ -53,6 +145,9 @@ function finish(res: express.Response, userInput: string, logMessage: string, er
         res.end();
     }
 }
+
+// Store chat history for context
+let chatHistory: Array<{role: 'user' | 'system' | 'assistant', content: string}> = [];
 
 app.post('/chat', async (req, res) => {
     const userInput = req.body.chat_input;
@@ -96,8 +191,26 @@ app.post('/chat', async (req, res) => {
                 res.write(`<div><strong>Appleby:</strong> ${pre_chat_commands_status_message}</div>`);
             }
             if (llmInput) {
-                const response = await model.invoke(llmInput);
+                // Add user input to chat history
+                chatHistory.push({role: 'user', content: llmInput});
+                
+                // Build context from chat history
+                const messages = chatHistory.map(msg => ({
+                    role: msg.role,
+                    content: msg.content
+                }));
+                
+                const response = await model.invoke(messages);
                 const botResponse = response.content.toString();
+                
+                // Add bot response to chat history
+                chatHistory.push({role: 'assistant', content: botResponse});
+                
+                // Keep chat history manageable (last 20 messages)
+                if (chatHistory.length > 20) {
+                    chatHistory = chatHistory.slice(-20);
+                }
+                
                 if (!res.writableEnded) {
                     res.write(`<div><strong>Bot:</strong> ${botResponse}</div>`);
                 }
@@ -107,6 +220,26 @@ app.post('/chat', async (req, res) => {
             finish(res, userInput, 'Error calling OpenAI:', error, 'Could not get a response from the AI model.');
         }
     });
+});
+
+// API endpoint to add report content to chat history
+app.post('/api/report-context', express.json(), (req, res) => {
+    const { ticker, rssd_id, content } = req.body;
+    
+    if (!ticker || !rssd_id || !content) {
+        return res.status(400).json({ error: 'Missing required fields' });
+    }
+    
+    // Add report context to chat history (use text version for LLM)
+    const contextMessage = `User requested to view the ${ticker} (RSSD ID: ${rssd_id}) financial report. Here is the report content:\n\n${content}`;
+    chatHistory.push({role: 'system', content: contextMessage});
+    
+    // Keep chat history manageable
+    if (chatHistory.length > 20) {
+        chatHistory = chatHistory.slice(-20);
+    }
+    
+    res.json({ success: true });
 });
 
 app.listen(port, () => {
