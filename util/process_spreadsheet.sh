@@ -68,12 +68,13 @@ if [ ! -f "$spreadsheet_fn" ]; then
 fi
 case "$spreadsheet_fn" in
 	*.csv)
-		if csv.rm_embedded_commas_and_number_quotes.sh -overwrite $spreadsheet_fn; then
-			echo "OK csv.rm_embedded_commas_and_number_quotes.sh -overwrite $spreadsheet_fn" 1>&2
+		csv_fn="$spreadsheet_fn"
+                if csv.rm_embedded_commas_and_number_quotes.sh -overwrite $csv_fn; then
+			echo "OK csv.rm_embedded_commas_and_number_quotes.sh -overwrite $csv_fn" 1>&2
 		else
-			echo "FAIL csv.rm_embedded_commas_and_number_quotes.sh -overwrite $spreadsheet_fn" 1>&2
-			exit 1
-		fi
+			echo "FAIL csv.rm_embedded_commas_and_number_quotes.sh -overwrite $csv_fn" 1>&2
+                        exit 1
+                fi
 	;;
 	*)
 		echo "FAIL require csv format for now, but saw \"$spreadsheet_fn\"" 1>&2
@@ -82,14 +83,14 @@ case "$spreadsheet_fn" in
 esac
 updated_ticker_rssd_id_pairs_fn=$script_dir/../public/updated_ticker_rssd_id_pairs.csv
 if [ -f $updated_ticker_rssd_id_pairs_fn ]; then
-        if age_in_days.gt 1 $updated_ticker_rssd_id_pairs_fn; then
-                if rm -f $updated_ticker_rssd_id_pairs_fn; then
-                        echo "OK rm -f $updated_ticker_rssd_id_pairs_fn" 1>&2
-                else
-                        echo "FAIL rm -f $updated_ticker_rssd_id_pairs_fn" 1>&2
-                        exit 1
-                fi
-        fi
+	if age_in_days.gt 1 $updated_ticker_rssd_id_pairs_fn; then
+		if rm -f $updated_ticker_rssd_id_pairs_fn; then
+			echo "OK rm -f $updated_ticker_rssd_id_pairs_fn" 1>&2
+		else
+			echo "FAIL rm -f $updated_ticker_rssd_id_pairs_fn" 1>&2
+			exit 1
+		fi
+	fi
 fi
 Extract_rssd_ids > $t.0
 while read rssd_id; do
@@ -108,7 +109,9 @@ while read rssd_id; do
 		diff	   $csv_fn $out_fn
 	fi
 	if New_data_seen $out_fn; then
-		echo $rssd_id >> $script_dir/../data/updated_rssd_ids
+                if ! grep $rssd_id $script_dir/../data/updated_rssd_ids; then
+                        echo $rssd_id >> $script_dir/../data/updated_rssd_ids
+                fi
 		if load_parquet.sh $debug_mode $out_fn $script_dir/../data; then
 			echo "OK load_parquet.sh $debug_mode $out_fn $script_dir/../data" 1>&2
 		else
@@ -130,10 +133,10 @@ while read rssd_id; do
 			else
 				echo "OK: process_spreadsheet.sh saw generated report at \"$report_fn\"" 1>&2
 				ticker=`rssd_ids.sh -from_rssd_id $rssd_id`
-                                if ! grep "$ticker,$rssd_id" $updated_ticker_rssd_id_pairs_fn; then
-                                        echo "$ticker,$rssd_id" >> $updated_ticker_rssd_id_pairs_fn
-                                fi
-                        fi
+				if ! grep "$ticker,$rssd_id" $updated_ticker_rssd_id_pairs_fn; then
+					echo "$ticker,$rssd_id" >> $updated_ticker_rssd_id_pairs_fn
+				fi
+			fi
 		else
 			echo "FAIL financial_analyzer.sh $rssd_id" 1>&2
 			cat $t.out 1>&2
@@ -143,3 +146,4 @@ while read rssd_id; do
 done
 
 exit
+$dp/git/a/util/process_spreadsheet.sh -x $dp/git/a/util/spreadsheets/fsb_generated_all_non_test5.csv

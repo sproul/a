@@ -341,15 +341,40 @@ def main():
             report_generator = ReportGenerator(openrouter_key)
             html_report = report_generator.generate_report(analysis_result, ticker)
             
-            # Save report
+            # Save report and prompt
             output_dir = Path(args.output_dir) / args.rssd_id
             output_dir.mkdir(parents=True, exist_ok=True)
             report_path = output_dir / "report.htm"
+            prompt_path = output_dir / "prompt.txt"
             
+            # Save the HTML report
             with open(report_path, 'w', encoding='utf-8') as f:
                 f.write(html_report)
             
+            # Save the prompt instructions (without JSON data)
+            prompt_instructions = f"""You are a skilled bank analyst. Summarize the given financial metric data for the bank {ticker}, noting the overall trend of {ticker}'s business (if there is one) whether positive or negative. If there are multiple metrics which support each other, note that, e.g.: "Several metrics indicate a deterioration in loan quality, consistent with the decline in profit that has reversed the previous trend." If metrics contradict each other, that also should be noted, e.g.: "A sharp decline in loan quality makes the stellar increase in profit all the more mysterious." If seeming contradictions can be explained by other metrics, then please explain. If the metrics are simply inconsistent with each other, that also would be worth noting.
+
+If the LLM is capable of producing inline graphs of key financial metrics, it should do so. If it can't do that, but believes such graphs would be helpful, simply include placeholders in the report text, e.g., {{graph "Net profit"}}.
+        
+If you refer to a metric's extrapolated value, do not use the word 'expected' (which could be interpreted as reflecting Wall Street analyst consensus) when really it was just a computed reasonable value; instead use language like 'extrapolated' or other words which make it clear the expectation was based on the preceding numbers and their trend, if there was one.
+
+Please generate a minimally styled HTML report. Use simple HTML tags and inline CSS for basic styling.
+
+Financial Data:
+[See prompt.json for the complete financial data]"""
+            
+            # Save the financial data as JSON
+            json_path = output_dir / "prompt.json"
+            
+            with open(prompt_path, 'w', encoding='utf-8') as f:
+                f.write(prompt_instructions)
+                
+            with open(json_path, 'w', encoding='utf-8') as f:
+                json.dump(analysis_result, f, indent=2)
+            
             print(f"Report saved to: {report_path}")
+            print(f"Prompt saved to: {prompt_path}")
+            print(f"Financial data saved to: {json_path}")
         else:
             print("\nerror: no OpenRouter API key found in $HOME/.or. Skipping HTML report generation.")
             print("To generate HTML reports, create a file at $HOME/.or with your OpenRouter API key.")
