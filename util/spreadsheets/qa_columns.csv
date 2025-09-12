@@ -1,0 +1,318 @@
+﻿Field,QA Field ID,Field Type,,,,,,
+Cash & Noninterest-Bearing Deposits,2,Bank
+Interest Bearing Balances Due from Depositories,1557,Bank
+Fed Funds Sold & Reverse Repos,5,Bank
+Total Cash & Equivalents,1810,Bank
+Total Cash & Equivalents / Assets,1811,Bank
+Securities - Held to Maturity,1821,Bank
+Securities - Available for Sale,1822,Bank
+Total Securities,1789,Bank
+Total Securities / Assets,74,Bank
+Loans Held for Sale,1823,Bank
+Loans Held for Investment,1824,Bank
+"Total Gross Loans & Leases, Net of Unearned Income",1525,Bank
+Loan Loss Reserve,1334,Bank
+Loan Loss Reserve / Loans,1337,Bank
+Net Loans & Leases (including HFS),1769,Bank
+Net Loans / Deposits,1713,Bank
+Net Loans & Leases HFI / Assets,63,Bank
+Premises & Fixed Assets,44,Bank
+Other Real Estate Owned,1385,Bank
+Goodwill,6,Bank
+Mortgage Servicing Assets,37,Bank
+Other Intangibles,1825,Bank
+Total Intangibles,1826,Bank
+Bank Owned Life Insurance,1,Bank
+All Other Assets,1827,Bank
+Total Assets,45,Bank
+Tangible Assets,2877,Bank
+Expanded Earning Assets,47,Bank
+Expanded Earning Assets / Assets,69,Bank
+Regulatory Earning Assets,48,Bank
+Regulatory Earning Assets / Assets,70,Bank
+Total Noninterest Bearing Deposits,1828,Bank
+Total Interest Bearing Deposits,1829,Bank
+Total Foreign Deposits,1524,Bank
+Total Deposits,46,Bank
+Total Deposits / Total Liabilities,2859,Bank
+Fed Funds Purchased & Repo Agreements,4,Bank
+FHLB Borrowings,1830,Bank
+Other Borrowings,1832,Bank
+Subordinated Debt,2876,Bank
+All Other Liabilities,2862,Bank
+Total Liabilities,2882,Bank
+Preferred Equity,43,Bank
+Common Stock & Surplus,1833,Bank
+Retained Earnings,1834,Bank
+AOCI & Other Components,1835,Bank
+Common Equity,3,Bank
+Non-Controlling Minority Interests,1836,Bank
+Total Equity Capital,49,Bank
+Total Liabilities & Equity,1837,Bank
+Total Tangible Equity,1090,Bank
+Tangible Common Equity,1790,Bank
+Total Equity / Assets,71,Bank
+Tangible Equity / Tangible Assets,1572,Bank
+Tangible Common Equity / Tangible Assets,1571,Bank
+Common Dividends,842,Bank
+Dividend Payout Ratio,4003,Bank
+Preferred Dividends,1294,Bank
+"Sale, Retirement, etc. of Capital Stock",1838,Bank
+Treasury Stock Transactions,1839,Bank
+Changes Incident to Business Combinations,1840,Bank
+Other Comprehensive Income,1841,Bank
+Total Interest Income,1320,Bank
+Total Interest Expense,1319,Bank
+Net Interest Income,1289,Bank
+Net Interest Margin,1220,Bank
+Service Charges on Deposits,1312,Bank
+Fiduciary Activities,1259,Bank
+Gain on Sale of Loans,1281,Bank
+Other Noninterest Income (core),1293,Bank
+Noninterest Income (core),1800,Bank
+Noninterest Income (core) / Assets,1326,Bank
+Noninterest Income (core) / Core Operating Revenue,1845,Bank
+Salaries & Benefits,1309,Bank
+Premises & Fixed Assets Expense,1291,Bank
+Data Processing,1801,Bank
+"Legal, Accounting & Consulting",1802,Bank
+Other Noninterest Expense (core),1803,Bank
+Total Noninterest Expense (core),1321,Bank
+Noninterest Expense (core) / Assets,1323,Bank
+Efficiency Ratio (core),1257,Bank
+Core Operating Earnings (COE),1297,Bank
+Core Operating Earnings/Avg Assets,1299,Bank
+Provision for Credit Losses-Loans,1263,Bank
+Gain/(Loss) On Sale of OREO,1282,Bank
+Total Credit Costs,1804,Bank
+Total Credit Costs / Assets,1806,Bank
+Gain on Sale of Securities,1284,Bank
+Gain on Sale of Other Assets,1283,Bank
+Amortization of Intangibles,1254,Bank
+Total Other Non-Core Items,1807,Bank
+Total Other Non-Core Expenses / Assets,1808,Bank
+Pretax Net Income Before Extraordinary Items,1296,Bank
+ROAA (pretax),1792,Bank
+Income Taxes,1262,Bank
+Tax Rate,1316,Bank
+Extraordinary Items (net of tax),1258,Bank
+Net Income Attributable to Noncontrolling Minority Interests,1286,Bank
+Net Income (stated),1285,Bank
+ROAA (stated),1791,Bank
+Preferred Dividends,1294,Bank
+Net Income Available to Common Shareholders,1816,Bank
+ROAE Available to Common Shareholders (stated),3448,Bank
+ROATE Available to Common Shareholders (stated),3450,Bank
+ROATCE Available to Common Shareholders (stated),3449,Bank
+Common Dividends,842,Bank
+Dividend Payout Ratio,4003,Bank
+Total Assets,45,Bank
+Full Time Equivalent Employees (FTE),1260,Bank
+Total Assets per FTE,1842,Bank
+Salaries & Benefits Expense / Assets,3154,Bank
+Premises & Fixed Assets Expense / Assets,3155,Bank
+Data Processing Expense / Assets,3156,Bank
+"Legal, Accounting & Consulting Expense / Assets",3157,Bank
+Noninterest Expense (core) / Assets,1323,Bank
+Total Noninterest Expense (core),1321,Bank
+"Noninterest Expense Growth (core, YoY)",3069,Bank
+(Nonint. Expense - Nonint. Income) / Assets,3158,Bank
+Salaries & Benefits per Avg. FTE,1847,Bank
+Premises & Fixed Asset Expense per Average FTE,2874,Bank
+Efficiency Ratio (core),1257,Bank
+Net Interest Income,1289,Bank
+Noninterest Income (core),1800,Bank
+Core Operating Revenue,1843,Bank
+Noninterest Income (core) / Core Operating Revenue,1845,Bank
+Noninterest Income (core) / Assets,1326,Bank
+Core Operating Earnings/Avg Assets,1299,Bank
+Core Operating Revenue per Avg. FTE,1846,Bank
+Mortgages Originated,3048,Bank
+Mortgages Sold,3049,Bank
+Fee Income from Sale & Servicing of Mortgage Loans,3050,Bank
+Fee Earned / Mortgages Sold,3051,Bank
+Mortgage Servicing Assets,37,Bank
+Net Servicing Fees,3052,Bank
+Net Servicing Fees / Mortgage Servicing Assets,3053,Bank
+Total Managed Fiduciary Assets,3076,Bank
+Total Non-Managed Fiduciary Assets,3077,Bank
+Custody & Safekeeping Assets,3078,Bank
+Total Trust Assets,3079,Bank
+Fiduciary Activities,1259,Bank
+Trust Expenses & Net Losses,3081,Bank
+Trust Net Income,3082,Bank
+Total Deposits,46,Bank
+Number of Branches,3073,Bank
+Deposits per Branch,3072,Bank
+Service Charges on Deposits,1312,Bank
+Deposit Service Charges / Deposits,3054,Bank
+Deposit Service Charges per Branch,3070,Bank
+Premises & Fixed Assets Expense,1291,Bank
+Premises & Fixed Asset Expense / Deposits,3056,Bank
+Premises & Fixed Asset Expense per Branch,3071,Bank
+Number of Deposit Accounts ≤ $250k,1857,Bank
+Average Deposits per Account ≤ $250k,1858,Bank
+Number of Deposit Accounts > $250k,1859,Bank
+Average Deposits per Account > $250k,1860,Bank
+Total Number of Deposit Accounts,1861,Bank
+Average Deposits / Account - Total,1862,Bank
+Regulatory Earning Assets,48,Bank
+Regulatory Earning Assets / Assets,70,Bank
+Expanded Earning Assets,47,Bank
+Expanded Earning Assets / Assets,69,Bank
+Net Loans / Deposits,1713,Bank
+Net Loans & Leases HFI / Assets,63,Bank
+Total Securities / Assets,74,Bank
+Total Cash & Equivalents / Assets,1811,Bank
+Total Deposits / Total Liabilities,2859,Bank
+1-4 Family Residential Mortgage: 1st Lien,1863,Bank
+1-4 Family Residential Mortgage: Jr. Lien,1864,Bank
+1-4 Family Loans: Revolving,1505,Bank
+Total 1-4 Family Residential Loans,1865,Bank
+Multifamily Residential Loans,1482,Bank
+1-4 Family Residential Construction Loans,1866,Bank
+"Other Construction, Development & Land Loans",1867,Bank
+Total Construction & Land Development Loans,1868,Bank
+Owner Occupied Nonfarm Nonresidential Loans,1498,Bank
+Other Nonfarm Nonresidential,1491,Bank
+Total Nonfarm Nonresidential Loans,1870,Bank
+Loans Secured by Farmland,1869,Bank
+Total Real Estate Loans,1871,Bank
+Commercial & Industrial Loans,2887,Bank
+Credit Card Loans,3094,Bank
+Auto Loans,2863,Bank
+Other Consumer Loans,3055,Bank
+Total Consumer Loans,2994,Bank
+Agricultural Production Loans,2855,Bank
+Loans to Governmental Entities,3057,Bank
+Loans to Financial Institutions,3058,Bank
+Other Loans,3059,Bank
+Leases,2888,Bank
+Less: Unearned Income on Loans,2973,Bank
+"Total Gross Loans & Leases, Net of Unearned Income",1525,Bank
+Total Gross Loans / Deposits,2889,Bank
+Yield on Total Loans & Leases,1241,Bank
+1-4 Family Residential Mortgage: 1st Lien (% Composition),2890,Bank
+1-4 Family Residential Mortgage: Jr Lien (% Composition),2891,Bank
+1-4 Family Loans: Revolving (% Composition),1506,Bank
+Total 1-4 Family Residential Loans (% Composition),1511,Bank
+Multifamily Residential Loans (% Composition),1483,Bank
+1-4 Family Residential Construction Loan (% Composition),2894,Bank
+"Other Construction, Development & Land (% Composition)",3060,Bank
+Construction & Land Development (% Composition),1414,Bank
+Owner Occupied Nonfarm Nonresidential Loans (% Composition),1499,Bank
+Other Nonfarm Nonresidential (% Composition),1492,Bank
+Total Nonfarm Nonresidential Loans (% Composition),1517,Bank
+Loans Secured by Farmland (% Composition),1508,Bank
+Total Real Estate Loans (% Composition),1532,Bank
+Commercial & Industrial Loans (% Composition),1408,Bank
+Credit Card Loans (% Composition),3062,Bank
+Auto Loans (% Composition),2895,Bank
+Other Consumer Loans (% Composition),3064,Bank
+Total Consumer Loans (% Composition),1416,Bank
+Agricultural Production Loans (% Composition),1873,Bank
+Loans to Governmental Entities (% Composition),3066,Bank
+Loans to Financial Institutions (% Composition),3067,Bank
+Other Loans (% Composition),3068,Bank
+Leases (% Composition),1426,Bank
+Yield on Interest Bearing Balances Due From Depository Institutions,1193,Bank
+Yield on Fed Funds Sold & Reverse Repos,3095,Bank
+Yield on Trading Assets,1245,Bank
+Yield on Total Cash & Equivalents,1235,Bank
+Yield on Treasury & Agency Securities,1251,Bank
+Yield on Mortgage Backed Securities,1217,Bank
+Yield on All Other Securities,1161,Bank
+Yield on Total Securities,1244,Bank
+Yield on 1-4 Family Loans,1181,Bank
+Yield on Other Real Estate Loans,1226,Bank
+Yield on C&I Loans,1170,Bank
+Yield on Credit Card Loans,1177,Bank
+Yield on Consumer Loans,1173,Bank
+Yield on Leases,1202,Bank
+Yield on Total Loans & Leases,1241,Bank
+Yield on Earning Assets,1200,Bank
+Rate on Interest Bearing Transaction Accounts,1197,Bank
+Rate on Total Savings Accounts,1229,Bank
+Rate on Time Deposits ≤ $250k (prev. 100k),1167,Bank
+Rate on Time Deposits > $250k (prev. $100k),1164,Bank
+Rate on Total Interest-Bearing Deposits,1192,Bank
+Total Cost of Deposits,1176,Bank
+Rate on Fed Funds Purchased & Repo Agreements,1184,Bank
+Rate on Other Borrowed Money,1222,Bank
+Rate on Subordinated Notes & Debentures,1232,Bank
+Rate on Total Non-Deposit Liabilities,3074,Bank
+Total Cost of Funds,1236,Bank
+Interest Rate Spread,1201,Bank
+Net Interest Margin,1220,Bank
+Demand Deposits,2907,Bank
+Other Transaction Accounts,2938,Bank
+Total Transaction Accounts,2963,Bank
+Money Market Accounts,2920,Bank
+Other Savings Accounts,2937,Bank
+Total Savings Accounts,2961,Bank
+Time Deposits < $100k,2943,Bank
+Time Deposits $100k-$250k,2941,Bank
+Time Deposits > $250k,2942,Bank
+Total Time Deposits,2962,Bank
+Total Domestic Deposits,1522,Bank
+Total Foreign Deposits,1524,Bank
+Total Deposits,46,Bank
+Total Deposits / Total Liabilities,2859,Bank
+Total Deposits / Assets,68,Bank
+Total Noninterest Bearing Deposits,1828,Bank
+Nonbrokered Listing Service Deposits,2922,Bank
+Reciprocal Brokered Deposits,2939,Bank
+Other Brokered Deposits,2923,Bank
+Total Brokered Deposits,2946,Bank
+Total State & Political Subdivision Deposits,3096,Bank
+Core Deposits,1750,Bank
+Number of Deposit Accounts ≤ $250k,1857,Bank
+Number of Deposit Accounts > $250k,1859,Bank
+Total Number of Deposit Accounts,1861,Bank
+Total Cost of Deposits,1176,Bank
+Demand Deposits (% Composition),1418,Bank
+Other Transaction Accounts (% Composition),1497,Bank
+Total Transaction Accounts (% Composition),1551,Bank
+Money Market Deposit Accounts (% Composition),1481,Bank
+Other Savings Accounts (% Composition),1496,Bank
+Total Savings Accounts (% Composition),1534,Bank
+Time Deposits < $100k (% Composition),1547,Bank
+Time Deposits $100k-250k (% Composition),1540,Bank
+Time Deposits > $250k (% Composition),1544,Bank
+Total Time Deposits (% Composition),1545,Bank
+Total Noninterest Bearing Deposits (% Composition),1523,Bank
+Nonbrokered Listing Service Deposits (% Composition),1486,Bank
+Reciprocal Brokered Deposits (% Composition),1500,Bank
+Other Brokered Deposits (% Composition),3075,Bank
+Total Brokered Deposits (% Composition),1514,Bank
+Total State & Political Subdivision Deposits (% Composition),3097,Bank
+Total Core Deposits (% Composition),1515,Bank
+Loans 30-89 Days Past Due,1338,Bank
+Loans 30-89 Days Past Due / Loans,1561,Bank
+Nonaccrual Loans,1380,Bank
+Nonaccrual Loans / Loans,1562,Bank
+Loans 90+ Days Past Due,1339,Bank
+Loans 90+ Days Past Due / Loans,1564,Bank
+Total Nonperforming Loans,1399,Bank
+Total Nonperforming Loans / Loans,1565,Bank
+Other Real Estate Owned,1385,Bank
+OREO / Assets,64,Bank
+Nonperforming Assets (NPAs),1381,Bank
+Nonperforming Assets / Assets,1566,Bank
+Restructured Loans,1390,Bank
+Restructured Loans / Loans,1567,Bank
+Nonperforming Assets & Restructured Loans,1382,Bank
+Nonperforming Assets & Restructured Loans / Assets,1568,Bank
+Nonperforming Loans Covered by Government Guarantees,1384,Bank
+OREO Covered by Loss Sharing Agreement,1386,Bank
+Nonperforming Assets & Restructured Loans (adjusted),1330,Bank
+Adjusted Nonperforming Assets & Restructured Loans / Total Assets,1570,Bank
+Texas Ratio (adjusted),1331,Bank
+Common Texas Ratio (adjusted),1328,Bank
+Loan Loss Reserve / Loans,1337,Bank
+Loan Loss Reserve / Nonperforming Loans,1336,Bank
+Net Chargeoff Ratio,1377,Bank
+Total Credit Loss Ratio,1394,Bank
+Provision for Credit Losses-Loans,1263,Bank
+Total Recoveries,2956,Bank
+Loan Loss Reserve,1334,Bank
