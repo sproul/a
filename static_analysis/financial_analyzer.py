@@ -269,11 +269,9 @@ class ReportGenerator:
             temperature=0.1
         )
     
-    def generate_report(self, analysis_data: Dict[str, Any], ticker: str) -> str:
-        """Generate HTML report using LLM analysis."""
-        
-        prompt = f"""
-You are a skilled bank analyst. Summarize the given financial metric data for the bank {ticker}, noting the overall trend of {ticker}'s business (if there is one) whether positive or negative. If there are multiple metrics which support each other, note that, e.g.: "Several metrics indicate a deterioration in loan quality, consistent with the decline in profit that has reversed the previous trend." If metrics contradict each other, that also should be noted, e.g.: "A sharp decline in loan quality makes the stellar increase in profit all the more mysterious." If seeming contradictions can be explained by other metrics, then please explain. If the metrics are simply inconsistent with each other, that also would be worth noting.
+    def _create_prompt_template(self, ticker: str) -> str:
+        """Create the prompt template for bank analysis."""
+        return f"""You are a skilled bank analyst. Summarize the given financial metric data for the bank {ticker}, noting the overall trend of {ticker}'s business (if there is one) whether positive or negative. If there are multiple metrics which support each other, note that, e.g.: "Several metrics indicate a deterioration in loan quality, consistent with the decline in profit that has reversed the previous trend." If metrics contradict each other, that also should be noted, e.g.: "A sharp decline in loan quality makes the stellar increase in profit all the more mysterious." If seeming contradictions can be explained by other metrics, then please explain. If the metrics are simply inconsistent with each other, that also would be worth noting.
 
 If the LLM is capable of producing inline graphs of key financial metrics, it should do so. If it can't do that, but believes such graphs would be helpful, simply include placeholders in the report text, e.g., {{graph "Net profit"}}.
         
@@ -282,12 +280,18 @@ If you refer to a metric's extrapolated value, do not use the word 'expected' (w
 Please generate a minimally styled HTML report. Use simple HTML tags and inline CSS for basic styling.
 
 Financial Data:
-{json.dumps(analysis_data, indent=2)}
-"""
-        
+{{financial_data}}"""
+    
+    def create_full_prompt(self, analysis_data: Dict[str, Any], ticker: str) -> str:
+        """Create the complete prompt with financial data."""
+        template = self._create_prompt_template(ticker)
+        return template.replace("{financial_data}", json.dumps(analysis_data, indent=2))
+    
+    def generate_report(self, analysis_data: Dict[str, Any], ticker: str) -> str:
+        """Generate HTML report using LLM analysis."""
+        prompt = self.create_full_prompt(analysis_data, ticker)
         message = HumanMessage(content=prompt)
         response = self.llm.invoke([message])
-        
         return response.content
 
 
@@ -352,16 +356,8 @@ def main():
                 f.write(html_report)
             
             # Save the prompt instructions (without JSON data)
-            prompt_instructions = f"""You are a skilled bank analyst. Summarize the given financial metric data for the bank {ticker}, noting the overall trend of {ticker}'s business (if there is one) whether positive or negative. If there are multiple metrics which support each other, note that, e.g.: "Several metrics indicate a deterioration in loan quality, consistent with the decline in profit that has reversed the previous trend." If metrics contradict each other, that also should be noted, e.g.: "A sharp decline in loan quality makes the stellar increase in profit all the more mysterious." If seeming contradictions can be explained by other metrics, then please explain. If the metrics are simply inconsistent with each other, that also would be worth noting.
-
-If the LLM is capable of producing inline graphs of key financial metrics, it should do so. If it can't do that, but believes such graphs would be helpful, simply include placeholders in the report text, e.g., {{graph "Net profit"}}.
-        
-If you refer to a metric's extrapolated value, do not use the word 'expected' (which could be interpreted as reflecting Wall Street analyst consensus) when really it was just a computed reasonable value; instead use language like 'extrapolated' or other words which make it clear the expectation was based on the preceding numbers and their trend, if there was one.
-
-Please generate a minimally styled HTML report. Use simple HTML tags and inline CSS for basic styling.
-
-Financial Data:
-[See prompt.json for the complete financial data]"""
+            prompt_template = report_generator._create_prompt_template(ticker)
+            prompt_instructions = prompt_template.replace("{financial_data}", "[See prompt.json for the complete financial data]")
             
             # Save the financial data as JSON
             json_path = output_dir / "prompt.json"
