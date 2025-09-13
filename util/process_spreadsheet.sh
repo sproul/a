@@ -68,13 +68,20 @@ if [ ! -f "$spreadsheet_fn" ]; then
 fi
 case "$spreadsheet_fn" in
 	*.csv)
-		csv_fn="$spreadsheet_fn"
-                if csv.rm_embedded_commas_and_number_quotes.sh -overwrite $csv_fn; then
-			echo "OK csv.rm_embedded_commas_and_number_quotes.sh -overwrite $csv_fn" 1>&2
+		csv_fn="$spreadsheet_fn.clean"
+		rm -f $csv_fn
+		if csv.rm_embedded_commas_and_number_quotes.sh -suffix clean $spreadsheet_fn; then
+			echo "OK csv.rm_embedded_commas_and_number_quotes.sh -suffix clean $spreadsheet_fn" 1>&2
 		else
-			echo "FAIL csv.rm_embedded_commas_and_number_quotes.sh -overwrite $csv_fn" 1>&2
+			echo "FAIL csv.rm_embedded_commas_and_number_quotes.sh -suffix clean $spreadsheet_fn" 1>&2
                         exit 1
                 fi
+		if [ ! -f "$csv_fn" ]; then
+			echo "FAIL: expected file at \"$csv_fn\"" 1>&2
+			exit 1
+		else
+			echo "OK $spreadsheet_fn cleaned into $csv_fn" 1>&2
+		fi
 	;;
 	*)
 		echo "FAIL require csv format for now, but saw \"$spreadsheet_fn\"" 1>&2
@@ -109,9 +116,9 @@ while read rssd_id; do
 		diff	   $csv_fn $out_fn
 	fi
 	if New_data_seen $out_fn; then
-                if ! grep $rssd_id $script_dir/../data/updated_rssd_ids; then
-                        echo $rssd_id >> $script_dir/../data/updated_rssd_ids
-                fi
+		if ! grep $rssd_id $script_dir/../data/updated_rssd_ids; then
+			echo $rssd_id >> $script_dir/../data/updated_rssd_ids
+		fi
 		if load_parquet.sh $debug_mode $out_fn $script_dir/../data; then
 			echo "OK load_parquet.sh $debug_mode $out_fn $script_dir/../data" 1>&2
 		else
@@ -146,4 +153,6 @@ while read rssd_id; do
 done
 
 exit
-$dp/git/a/util/process_spreadsheet.sh -x $dp/git/a/util/spreadsheets/fsb_generated_all_non_test5.csv
+spreadsheet_fn=$dp/git/a/util/spreadsheets/fsb_generated_all_non_test5.csv
+csv_fn=$dp/git/a/util/spreadsheets/fsb_generated_all_non_test5.csv.clean
+$dp/git/a/util/process_spreadsheet.sh -x $spreadsheet_fn

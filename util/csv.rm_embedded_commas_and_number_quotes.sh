@@ -2,7 +2,11 @@
 
 Sed()
 {
-        sed -E -e 's/$/,/' -e 's/([0-9]),([0-9][0-9][0-9](\.[0-9][0-9])?",)/\1\2/g' \
+        sed -e $'s/\r$//' |
+        sed -e 's///g' |
+        tr -d '\r' |
+        sed -e 's/$/,/' |
+        sed -E -e 's/([0-9]),([0-9][0-9][0-9](\.[0-9][0-9])?",)/\1\2/g' \
         -e 's/([0-9]),([0-9][0-9][0-9][0-9][0-9][0-9](\.[0-9][0-9])?",)/\1\2/g'	\
         -e 's/([0-9]),([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9](\.[0-9][0-9])?",)/\1\2/g' \
         -e 's/"(-?[0-9][0-9]*(\.[0-9][0-9])?)"/\1/g' \
@@ -43,6 +47,7 @@ set -o pipefail
 debug_mode=''
 dry_mode=''
 overwrite_mode=''
+suffix='new'
 t=`mktemp`; trap "rm $t*" EXIT
 verbose_mode=''
 while [ -n "$1" ]; do
@@ -56,6 +61,10 @@ while [ -n "$1" ]; do
 		-q|-quiet)
 			verbose_mode=''
 		;;
+                -suffix)
+                        shift
+                        suffix="$1"
+                ;;
                 -test)
                         Test
                         exit
@@ -79,9 +88,11 @@ while [ -n "$1" ]; do
 done
 csv_fn=$1
 
-cat $csv_fn | Sed > $csv_fn.new
-echo "diff $csv_fn $csv_fn.new"
-diff	   $csv_fn $csv_fn.new
+cat $csv_fn | Sed > $csv_fn.$suffix
+if [ -n "$verbose_mode" ]; then
+        echo "diff $csv_fn $csv_fn.$suffix"
+        diff	   $csv_fn $csv_fn.$suffix
+fi
 if [ -n "$overwrite_mode" ]; then
 	if mv $csv_fn /tmp; then
 		echo "OK mv $csv_fn /tmp" 1>&2
@@ -89,14 +100,14 @@ if [ -n "$overwrite_mode" ]; then
 		echo "FAIL mv $csv_fn /tmp" 1>&2
 		exit 1
 	fi
-        if mv $csv_fn.new $csv_fn; then
-		echo "OK mv $csv_fn.new $csv_fn" 1>&2
+        if mv $csv_fn.$suffix $csv_fn; then
+		echo "OK mv $csv_fn.$suffix $csv_fn" 1>&2
 	else
-		echo "FAIL mv $csv_fn.new $csv_fn" 1>&2
+		echo "FAIL mv $csv_fn.$suffix $csv_fn" 1>&2
                 exit 1
         fi
 fi
 exit
-$dp/git/a/util/csv.rm_embedded_commas_and_number_quotes.sh $t
+$dp/git/a/util/csv.rm_embedded_commas_and_number_quotes.sh ~/k
 exit
 $dp/git/a/util/csv.rm_embedded_commas_and_number_quotes.sh -test
